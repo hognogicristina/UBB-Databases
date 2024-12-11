@@ -130,3 +130,18 @@ dist
 .pnp.*
 
 .DS_Store
+.idea
+
+Academic ethics and integrity. Methodology of scientific research/.DS_Store
+Data mining/.DS_Store
+Data mining/Presenation/.DS_Store
+Database Management Systems Implementation/.DS_Store
+Database Management Systems Implementation/miniDBMS/.DS_Store
+Modular Arithmetics and Cryptography/.DS_Store
+
+Academic ethics and integrity. Methodology of scientific research/.idea
+Data mining/.idea
+Data mining/Presenation/.idea
+Database Management Systems Implementation/.idea
+Database Management Systems Implementation/miniDBMS/.idea
+Modular Arithmetics and Cryptography/.idea
