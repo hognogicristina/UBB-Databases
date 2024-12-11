@@ -1,0 +1,77 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment folders
+env/
+venv/
+ENV/
+.venv/
+.VENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.DS_Store
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+*.egg-info/
+
+# Test coverage reports
+.coverage
+*.cover
+.cache
+.nox/
+.tox/
+
+# IDE configurations
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Dependency files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Package manager files
+*.lock
+
+# Output files
+*.out
+*.pdf
+
+# System files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# PyCharm specific
+*.iml
+out/
+
+# Virtual Environment for poetry
+.pyre/
+.mypy_cache/
+
+# Temporary files
+*.~*
+*.orig
+*.rej
+
+# Secret files
+.env
+*.key
+
+.idea

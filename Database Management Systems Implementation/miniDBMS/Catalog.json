@@ -1,0 +1,908 @@
+{
+    "databases": [
+        {
+            "dataBaseName": "Library",
+            "tables": [
+                {
+                    "tableName": "Authors",
+                    "fileName": "Library_Authors",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "name",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "id"
+                        ]
+                    },
+                    "foreignKeys": [],
+                    "indexFiles": [
+                        {
+                            "indexName": "name.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "name"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tableName": "Books",
+                    "fileName": "Library_Books",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "title",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "author_id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "id"
+                        ]
+                    },
+                    "foreignKeys": [
+                        {
+                            "fkAttributes": [
+                                "author_id"
+                            ],
+                            "references": {
+                                "refTable": "Authors",
+                                "refAttributes": [
+                                    "id"
+                                ]
+                            }
+                        }
+                    ],
+                    "indexFiles": [
+                        {
+                            "indexName": "author_id.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "author_id"
+                            ]
+                        },
+                        {
+                            "indexName": "title.ind",
+                            "isUnique": 1,
+                            "indexAttributes": [
+                                "title"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "dataBaseName": "Hospital",
+            "tables": [
+                {
+                    "tableName": "Doctors",
+                    "fileName": "Hospital_Doctors",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "name",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "cnp",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "specialty",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "id"
+                        ]
+                    },
+                    "foreignKeys": [],
+                    "indexFiles": [
+                        {
+                            "indexName": "cnp.ind",
+                            "isUnique": 1,
+                            "indexAttributes": [
+                                "cnp"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tableName": "Patients",
+                    "fileName": "Hospital_Patients",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "name",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "cnp",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "doctor_id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "id"
+                        ]
+                    },
+                    "foreignKeys": [
+                        {
+                            "fkAttributes": [
+                                "doctor_id"
+                            ],
+                            "references": {
+                                "refTable": "Doctors",
+                                "refAttributes": [
+                                    "id"
+                                ]
+                            }
+                        }
+                    ],
+                    "indexFiles": [
+                        {
+                            "indexName": "doctor_id.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "doctor_id"
+                            ]
+                        },
+                        {
+                            "indexName": "cnp_name.ind",
+                            "isUnique": 1,
+                            "indexAttributes": [
+                                "cnp",
+                                "name"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tableName": "Appointments",
+                    "fileName": "Hospital_Appointments",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "patient_id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "doctor_id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "patient_id",
+                            "doctor_id"
+                        ]
+                    },
+                    "foreignKeys": [
+                        {
+                            "fkAttributes": [
+                                "patient_id"
+                            ],
+                            "references": {
+                                "refTable": "Patients",
+                                "refAttributes": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
+                            "fkAttributes": [
+                                "doctor_id"
+                            ],
+                            "references": {
+                                "refTable": "Doctors",
+                                "refAttributes": [
+                                    "id"
+                                ]
+                            }
+                        }
+                    ],
+                    "indexFiles": [
+                        {
+                            "indexName": "patient_id.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "patient_id"
+                            ]
+                        },
+                        {
+                            "indexName": "doctor_id.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "doctor_id"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "dataBaseName": "Company",
+            "tables": [
+                {
+                    "tableName": "Departments",
+                    "fileName": "Company_Departments",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "name",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "location",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": true
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "id"
+                        ]
+                    },
+                    "foreignKeys": [],
+                    "indexFiles": [
+                        {
+                            "indexName": "location.ind",
+                            "isUnique": 1,
+                            "indexAttributes": [
+                                "location"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tableName": "Employees",
+                    "fileName": "Company_Employees",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "name",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "age",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "salary",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "department_id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "id"
+                        ]
+                    },
+                    "foreignKeys": [
+                        {
+                            "fkAttributes": [
+                                "department_id"
+                            ],
+                            "references": {
+                                "refTable": "Departments",
+                                "refAttributes": [
+                                    "id"
+                                ]
+                            }
+                        }
+                    ],
+                    "indexFiles": [
+                        {
+                            "indexName": "department_id.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "department_id"
+                            ]
+                        },
+                        {
+                            "indexName": "name_age.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "name",
+                                "age"
+                            ]
+                        },
+                        {
+                            "indexName": "age_salary.ind",
+                            "isUnique": 1,
+                            "indexAttributes": [
+                                "age",
+                                "salary"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tableName": "Employees_Departments",
+                    "fileName": "Company_Employees_Departments",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "employee_id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "department_id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "type",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "company",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "employee_id",
+                            "department_id"
+                        ]
+                    },
+                    "foreignKeys": [
+                        {
+                            "fkAttributes": [
+                                "employee_id"
+                            ],
+                            "references": {
+                                "refTable": "Employees",
+                                "refAttributes": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
+                            "fkAttributes": [
+                                "department_id"
+                            ],
+                            "references": {
+                                "refTable": "Departments",
+                                "refAttributes": [
+                                    "id"
+                                ]
+                            }
+                        }
+                    ],
+                    "indexFiles": [
+                        {
+                            "indexName": "employee_id.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "employee_id"
+                            ]
+                        },
+                        {
+                            "indexName": "department_id.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "department_id"
+                            ]
+                        },
+                        {
+                            "indexName": "type_company.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "type",
+                                "company"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tableName": "Projects",
+                    "fileName": "Company_Projects",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "name",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "department_id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "id"
+                        ]
+                    },
+                    "foreignKeys": [
+                        {
+                            "fkAttributes": [
+                                "department_id"
+                            ],
+                            "references": {
+                                "refTable": "Departments",
+                                "refAttributes": [
+                                    "id"
+                                ]
+                            }
+                        }
+                    ],
+                    "indexFiles": [
+                        {
+                            "indexName": "department_id.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "department_id"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tableName": "Employees_Projects",
+                    "fileName": "Company_Employees_Projects",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "employee_id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "project_id",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "employee_id",
+                            "project_id"
+                        ]
+                    },
+                    "foreignKeys": [
+                        {
+                            "fkAttributes": [
+                                "employee_id"
+                            ],
+                            "references": {
+                                "refTable": "Employees",
+                                "refAttributes": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
+                            "fkAttributes": [
+                                "project_id"
+                            ],
+                            "references": {
+                                "refTable": "Projects",
+                                "refAttributes": [
+                                    "id"
+                                ]
+                            }
+                        }
+                    ],
+                    "indexFiles": [
+                        {
+                            "indexName": "employee_id.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "employee_id"
+                            ]
+                        },
+                        {
+                            "indexName": "project_id.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "project_id"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "dataBaseName": "School",
+            "tables": [
+                {
+                    "tableName": "Students",
+                    "fileName": "School_Students",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "StudID",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "GroupID",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "Name",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "Tel",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "email",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "mark",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "StudID"
+                        ]
+                    },
+                    "foreignKeys": [],
+                    "indexFiles": [
+                        {
+                            "indexName": "Tel.ind",
+                            "isUnique": 1,
+                            "indexAttributes": [
+                                "Tel"
+                            ]
+                        },
+                        {
+                            "indexName": "email.ind",
+                            "isUnique": 1,
+                            "indexAttributes": [
+                                "email"
+                            ]
+                        },
+                        {
+                            "indexName": "GroupID.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "GroupID"
+                            ]
+                        },
+                        {
+                            "indexName": "mark.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "mark"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tableName": "Students2",
+                    "fileName": "School_Students2",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "StudID",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "GroupID",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "Name",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "Tel",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "email",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "mark",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "StudID"
+                        ]
+                    },
+                    "foreignKeys": [],
+                    "indexFiles": [
+                        {
+                            "indexName": "GroupID.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "GroupID"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tableName": "Students3",
+                    "fileName": "School_Students3",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "StudID",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "GroupID",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "Name",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "Tel",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "email",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "mark",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "StudID"
+                        ]
+                    },
+                    "foreignKeys": [],
+                    "indexFiles": [
+                        {
+                            "indexName": "Tel.ind",
+                            "isUnique": 1,
+                            "indexAttributes": [
+                                "Tel"
+                            ]
+                        },
+                        {
+                            "indexName": "email.ind",
+                            "isUnique": 1,
+                            "indexAttributes": [
+                                "email"
+                            ]
+                        },
+                        {
+                            "indexName": "GroupIDMark.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "GroupID",
+                                "mark"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tableName": "Grades",
+                    "fileName": "School_Grades",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "GDate",
+                                "type": "date",
+                                "length": null,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "StudID",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "DiscID",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "Grade",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "GDate",
+                            "StudID",
+                            "DiscID"
+                        ]
+                    },
+                    "foreignKeys": [
+                        {
+                            "fkAttributes": [
+                                "StudID"
+                            ],
+                            "references": {
+                                "refTable": "Students",
+                                "refAttributes": [
+                                    "StudID"
+                                ]
+                            }
+                        }
+                    ],
+                    "indexFiles": [
+                        {
+                            "indexName": "StudID.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "StudID"
+                            ]
+                        },
+                        {
+                            "indexName": "GradesIndStudDisc.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "StudID",
+                                "DiscID"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
