@@ -5,9 +5,8 @@ This repository includes my projects from my master's degree in Databases at UBB
 <ul>
     <li><b>1<sup>st</sup> Semester</b></li>
     <ul>
-        <li><a href="https://github.com/hognogicristina/UBB-Databases/tree/main/First%20Year/Semester%201/Academic%20Ethics%20and
-%20Integrity.%20Methodology%20of%20Scientific%20Research">Academic Ethics and Integrity. Methodology of Scientific Research</a></li>
-        <li><a href="https://github.com/hognogicristina/UBB-Databases/tree/main/First%20Year/Semester%201/Data%20Mining">Data Mining</a></li>
+        <li><a href="https://github.com/hognogicristina/UBB-Databases/tree/main/First%20Year/Semester%201/Academic%20ethics%20and%20integrity.%20Methodology%20of%20scientific%20research">Academic Ethics and Integrity. Methodology of Scientific Research</a></li>
+        <li><a href="https://github.com/hognogicristina/UBB-Databases/tree/main/First%20Year/Semester%201/Data%20mining">Data Mining</a></li>
         <li><a href="https://github.com/hognogicristina/UBB-Databases/tree/main/First%20Year/Semester%201/Database%20Management%20Systems%20Implementation">Database Management Systems Implementation</a></li>
         <li><a href="https://github.com/hognogicristina/UBB-Databases/tree/main/First%20Year/Semester%201/Modular%20Arithmetics%20and%20Cryptography">Modular Arithmetics and Cryptography</a></li>
     </ul>
