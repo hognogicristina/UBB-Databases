@@ -89,6 +89,15 @@ async function fetchStudentIds(dbName) {
   return students.map(student => student._id);
 }
 
+async function fetchDepartmentIds(dbName) {
+  const departmentTable = getTableSchema(dbName, "Departments");
+  const collectionName = `${dbName}_${departmentTable.tableName}`;
+  const departmentCollection = client.db(dbName).collection(collectionName);
+
+  const departments = await departmentCollection.find({}).toArray();
+  return departments.map(department => department._id);
+}
+
 async function insertRowsBatch(dbName, tableName, rowCount) {
   try {
     handleUse(['USE', dbName], {write: console.log});
@@ -121,6 +130,59 @@ async function insertRowsBatch(dbName, tableName, rowCount) {
         };
 
         const fields = Object.entries(gradeData)
+          .map(([key, value]) => `${key}=${value}`)
+          .join(", ");
+
+        const command = `INSERT INTO ${tableName} ${fields}`.split(" ");
+        await handleInsert(command, {write: console.log});
+      }
+      console.log(`Inserted ${rowCount} rows into table "${tableName}".`);
+    } else if (tableName.includes("Departments")) {
+      for (let i = 1; i <= rowCount; i++) {
+        const departmentData = {
+          DepartmentID: i,
+          DepartmentName: `'Department_${faker.string.alpha(5)}'`,
+          Location: `'${faker.location.city()}'`,
+        };
+
+        const fields = Object.entries(departmentData)
+          .map(([key, value]) => `${key}=${value}`)
+          .join(", ");
+
+        const command = `INSERT INTO ${tableName} ${fields}`.split(" ");
+        await handleInsert(command, {write: console.log});
+      }
+      console.log(`Inserted ${rowCount} rows into table "${tableName}".`);
+    } else if (tableName.includes("Groups")) {
+      const departmentIds = await fetchDepartmentIds(dbName);
+
+      for (let i = 1; i <= rowCount; i++) {
+        const groupData = {
+          GroupID: i,
+          GroupName: `'Group_${faker.string.alpha(5)}'`,
+          Year: Math.floor(Math.random() * 4) + 1,
+          DepartmentID: departmentIds[Math.floor(Math.random() * departmentIds.length)],
+        };
+
+        const fields = Object.entries(groupData)
+          .map(([key, value]) => `${key}=${value}`)
+          .join(", ");
+
+        const command = `INSERT INTO ${tableName} ${fields}`.split(" ");
+        await handleInsert(command, {write: console.log});
+      }
+      console.log(`Inserted ${rowCount} rows into table "${tableName}".`);
+    } else if (tableName.includes("Subjects")) {
+      const departmentIds = await fetchDepartmentIds(dbName);
+
+      for (let i = 1; i <= rowCount; i++) {
+        const subjectData = {
+          SubjectID: i,
+          SubjectName: `'Subject_${faker.string.alpha(5)}'`,
+          DepartmentID: departmentIds[Math.floor(Math.random() * departmentIds.length)],
+        };
+
+        const fields = Object.entries(subjectData)
           .map(([key, value]) => `${key}=${value}`)
           .join(", ");
 

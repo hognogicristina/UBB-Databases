@@ -96,10 +96,16 @@ use School
 drop database School
 
 create table Students StudID int primary, GroupID int, Name varchar 255, Tel varchar 255 unique, email varchar 255 unique, mark int
+create table Grades GDate date primary, StudID int primary foreign=Students.StudID, DiscID varchar 255 primary, Grade int
+create table Departments DepartmentID int primary, DepartmentName varchar 255 unique, Location varchar 255
+create table Groups GroupID int primary, GroupName varchar 255 unique, Year int, DepartmentID int foreign=Departments.DepartmentID
+create table Subjects SubjectID int primary, SubjectName varchar 255 unique, DepartmentID int foreign=Departments.DepartmentID
 create table Students2 StudID int primary, GroupID int, Name varchar 255, Tel varchar 255, email varchar 255, mark int
 create table Students3 StudID int primary, GroupID int, Name varchar 255, Tel varchar 255 unique, email varchar 255 unique, mark int
-create table Grades GDate date primary, StudID int primary foreign=Students.StudID, DiscID varchar 255 primary, Grade int
 
+drop table Subjects
+drop table Groups
+drop table Departments
 drop table Grades
 drop table Students
 drop table Students2
@@ -107,9 +113,9 @@ drop table Students3
 
 create index GroupID on Students GroupID
 create index mark on Students mark
+create index GradesIndStudDisc on Grades StudID, DiscID
 create index GroupID on Students2 GroupID
 create index GroupIDMark on Students3 GroupID, mark
-create index GradesIndStudDisc on Grades StudID, DiscID
 
 Laboratory 2 and 3
 insert into Students StudID = 345, GroupID = 243, Name = 'Alice', Tel = '123456', email = 'alice@gmail.com', mark = 10
@@ -148,10 +154,16 @@ select Name from Students3 where GroupID = 243
 select * from Grades where StudID = 345 and DiscID like 'PF%'
 
 Laboratory 5
+select S.GroupID, S.Name, G.GroupID, G.Year from Students S full join Groups G on S.GroupID = G.GroupID where G.Year > 2
+select G.DepartmentID, G.GroupName, G.Year, S.DepartmentID, S.SubjectName from Groups G right join Subjects S on G.DepartmentID = S.DepartmentID where S.SubjectName like '%_U%'
+select G.DepartmentID, G.GroupName, G.Year, S.DepartmentID, S.SubjectName from Groups G inner join Subjects S on G.DepartmentID = S.DepartmentID where S.SubjectName like '%_U%' and G.Year > 2
+
+select distinct S.GroupID, G.GroupID, G.DepartmentID, D.DepartmentID from Students S inner join Groups G on S.GroupID = G.GroupID inner join Departments D on G.DepartmentID = D.DepartmentID
+select distinct S.GroupID, G.GroupID, G.DepartmentID, D.DepartmentID, D.DepartmentID, Ss.DepartmentID from Students S inner join Groups G on S.GroupID = G.GroupID inner join Departments D on G.DepartmentID = D.DepartmentID inner join Subjects Ss on D.DepartmentID = Ss.DepartmentID
 
 db.School_Students.find()
 db.School_Grades.find()
-db.School_Grades_fk_Students_StudID.ind.find()
+db.School_Grades_fk_Students_StudID.ind.find(f)
 db.School_Grades_idx_StudID_DiscID.ind.find()
 
 db.getCollection('School_Students').getIndexes()

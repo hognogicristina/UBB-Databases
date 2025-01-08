@@ -51,7 +51,6 @@ async function indexConditionQuery(indexCond, indexCollection, query) {
     let regex;
     if (value.startsWith('%') && value.endsWith('%')) {
       regex = new RegExp(value.slice(1, -1), 'i');
-      console.log('Regex:', regex);
     } else if (value.startsWith('%')) {
       regex = new RegExp(`${value.slice(1)}$`, 'i');
     } else if (value.endsWith('%')) {
@@ -73,8 +72,8 @@ async function fetchDocuments(table, whereConditions, currentDatabase) {
   let pkSets = [];
   for (const indexCond of indexedConditions) {
     const indexCollection = db.collection(`${currentDatabase}_${table.tableName}_idx_${indexCond.indexName}`);
-    if (indexCond.isComposite) {
 
+    if (indexCond.isComposite) {
       const compositeAttributes = table.indexFiles.find(
         (index) => index.indexName === indexCond.indexName
       ).indexAttributes;
@@ -179,25 +178,18 @@ async function fetchDocuments(table, whereConditions, currentDatabase) {
     );
   }
 
+
   let results = [];
   if (commonPrimaryKeys.length > 0) {
     results = await collection.find({_id: {$in: commonPrimaryKeys}}).toArray();
+  } else if (indexedConditions.length === 0) {
+    results = await collection.find().toArray();
   }
+
   return results;
 }
 
-
-function mergeJoinResults(tableResults) {
-  if (tableResults.length === 0) return [];
-
-  return tableResults.reduce((acc, current) => {
-    return acc.flatMap(row1 => current.map(row2 => ({
-      _id: `${row1._id}$${row2._id}`, value: `${row1.value}$${row2.value}`
-    })));
-  });
-}
-
-async function applyProjection(results, columns, table, whereConditions, currentDatabase) {
+async function applyProjection(results, columns, table, whereConditions, currentDatabase, isJoinOperation) {
   const attributeNames = table.structure.attributes.map(attr => attr.attributeName);
   const primaryKeys = table.primaryKey.pkAttributes;
 
@@ -209,7 +201,7 @@ async function applyProjection(results, columns, table, whereConditions, current
     (cond) => !table.indexFiles.some((index) => index.indexAttributes.includes(cond.attribute))
   );
 
-  if (nonIndexedConditions.length > 0) {
+  if (nonIndexedConditions.length > 0 && !isJoinOperation) {
     const allDocuments = await collection.find({}, {projection: {_id: 1, value: 1}}).toArray();
 
     const parsedDocuments = allDocuments.map((doc) => {
@@ -239,7 +231,7 @@ async function applyProjection(results, columns, table, whereConditions, current
     const filteredDocuments = parsedDocuments.filter((doc) =>
       nonIndexedConditions.every((cond) => {
         const attrValue = doc[cond.attribute];
-        if (cond.operator === '=') return attrValue === cond.value;
+        if (cond.operator === '=') return attrValue == cond.value;
         if (cond.operator === '>') return attrValue > cond.value;
         if (cond.operator === '>=') return attrValue >= cond.value;
         if (cond.operator === '<') return attrValue < cond.value;
@@ -270,7 +262,7 @@ async function applyProjection(results, columns, table, whereConditions, current
 
   return results.map(result => {
     const projected = {};
-    if (nonIndexedConditions.length === 0) {
+    if (nonIndexedConditions.length === 0 && !isJoinOperation) {
       const pkValues = result._id.split('$');
       primaryKeys.forEach((pkAttr, idx) => {
         if (columns.includes(pkAttr) || columns.includes('*')) {
@@ -297,7 +289,7 @@ async function applyProjection(results, columns, table, whereConditions, current
     } else {
       columns.forEach(col => {
         if (col in result || columns.includes('*')) {
-          projected[col] = result[col];
+          projected[col] = result[col] !== undefined ? result[col] : null;
         }
       });
     }
@@ -334,10 +326,48 @@ function writeResultsToFile(results, columns, databaseName, tableName) {
   fileStream.end();
 }
 
+function whereCond(result, whereConditions) {
+  return result.filter((row) =>
+    whereConditions.every((cond) => {
+      const columnNameWithAlias = Object.keys(row).find((key) =>
+        key.endsWith(`.${cond.attribute}`)
+      );
+      const value = row[columnNameWithAlias]?.replace(/'/g, '').trim();
+
+      switch (cond.operator) {
+        case '=':
+          return value === cond.value;
+        case '>':
+          return value > cond.value;
+        case '>=':
+          return value >= cond.value;
+        case '<':
+          return value < cond.value;
+        case '<=':
+          return value <= cond.value;
+        case 'LIKE': {
+          const likeValue = cond.value.replace(/'/g, '');
+          if (likeValue.startsWith('%') && likeValue.endsWith('%')) {
+            return new RegExp(likeValue.slice(1, -1), 'i').test(value);
+          } else if (likeValue.startsWith('%')) {
+            return new RegExp(`${likeValue.slice(1)}$`, 'i').test(value);
+          } else if (likeValue.endsWith('%')) {
+            return new RegExp(`^${likeValue.slice(0, -1)}`, 'i').test(value);
+          } else {
+            return new RegExp(`^${likeValue}$`, 'i').test(value);
+          }
+        }
+        default:
+          return false;
+      }
+    })
+  );
+}
+
 module.exports = {
   fetchDocuments,
-  mergeJoinResults,
   applyProjection,
   removeDuplicates,
-  writeResultsToFile
+  writeResultsToFile,
+  whereCond
 };

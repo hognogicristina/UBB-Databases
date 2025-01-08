@@ -5,8 +5,12 @@ async function updateIndexes(table, fields, currentDatabase, client) {
 
   for (const index of indexes) {
     const collectionName = `${currentDatabase}_${table.tableName}_idx_${index.indexName}`;
-    const collection = client.db(currentDatabase).collection(collectionName);
 
+    const collections = await client.db(currentDatabase).listCollections().toArray();
+    const hasFkCollection = collections.some((col) => col.name.includes("_fk_"));
+    if (hasFkCollection) continue;
+
+    const collection = client.db(currentDatabase).collection(collectionName);
     const indexKey = index.indexAttributes
       .map(attr => fields[attr] || '')
       .join("$");
@@ -36,8 +40,13 @@ async function updateIndexFK(table, fields, currentDatabase, client) {
   for (const foreignKey of table.foreignKeys) {
     const refTable = foreignKey.references.refTable;
     const indexName = `${table.fileName}_fk_${refTable}_${foreignKey.fkAttributes.join('_')}.ind`;
-    const collections = await client.db(currentDatabase).listCollections({name: indexName}).toArray();
-    if (collections.length === 0) continue;
+
+    const collections = await client.db(currentDatabase).listCollections().toArray();
+    const hasIdxCollection = collections.some((col) => col.name.includes("_idx_"));
+    if (hasIdxCollection) continue;
+
+    const collectionsList = await client.db(currentDatabase).listCollections({name: indexName}).toArray();
+    if (collectionsList.length === 0) continue;
 
     const indexCollection = client.db(currentDatabase).collection(indexName);
     const nonUniqKey = foreignKey.fkAttributes.map(attr => fields[attr] || '').join("$");

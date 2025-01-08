@@ -107,27 +107,81 @@ function missingPKValueError(primaryKey, conditionMap) {
   }
 }
 
+const parseJoinClauses = (text) => {
+  const joinClauses = [];
+  const joinRegex = /\s*(inner|left|right|full)\s+join\s+(.+?)\s+on\s+(.+?)(?=\s+(inner|left|right|full)\s+join|$)/gi;
+
+  let match;
+  while ((match = joinRegex.exec(text)) !== null) {
+    const joinType = match[1].toLowerCase();
+    const joinTable = match[2].trim();
+    const onConditions = match[3]
+      .split('and')
+      .map((cond) => {
+        const [left, right] = cond.split('=').map((s) => s.trim());
+        return {left, right};
+      });
+
+    joinClauses.push({joinType, joinTable, onConditions});
+  }
+
+  return joinClauses;
+};
+
 function parseSelectCommand(command) {
   const commandText = command.join(" ");
+  const joinCount = (commandText.match(/\bjoin\b/gi) || []).length;
   const selectMatch = commandText.match(/select\s+(distinct\s+)?(.+?)\s+from\s+(.+?)(\s+where\s+(.+))?$/i);
-
   if (!selectMatch) return "ERROR: Invalid SELECT command";
 
   const distinct = Boolean(selectMatch[1]);
   const columnsText = selectMatch[2].trim();
-  const columns = columnsText === '*' ? ['*'] : columnsText.split(',').map(col => col.trim());
-  const tables = selectMatch[3].trim().split(',').map(tbl => tbl.trim());
-  const whereClause = selectMatch[5] || "";
+  const columns = columnsText === '*' ? ['*'] : columnsText.split(',').map((col) => col.trim());
+  const tablesText = selectMatch[3].trim();
 
+  const joinMatch = tablesText.match(/(.+?)\s+(inner|left|right|full)\s+join\s+(.+?)\s+on\s+(.+)/i);
+  let tables = [];
+  let joinClause = null;
+
+  if (joinMatch) {
+    tables = [joinMatch[1].trim(), joinMatch[3].trim()];
+    const joinType = joinMatch[2].toLowerCase();
+    const onConditions = joinMatch[4].split('and').map((cond) => {
+      const [left, right] = cond.split('=').map((s) => s.trim());
+      const adjustedRight = right.split(/\s+/)[0];
+      return {left, right: adjustedRight};
+    });
+
+    joinClause = {joinType, joinTable: tables[1], onConditions};
+  } else {
+    tables = tablesText.split(',').map((tbl) => tbl.trim());
+  }
+
+  let joinRemainingClause;
+  if (joinCount > 1) {
+    const secondJoinRegex = /^(.+?\s+inner\s+join\s+.+?\s+on\s+.+?)\s+(inner|left|right|full)\s+join/i;
+    const secondJoinMatch = tablesText.match(secondJoinRegex);
+
+    let matchedText = '';
+    let remainingTablesText = tablesText;
+
+    if (secondJoinMatch) {
+      matchedText = secondJoinMatch[1].trim();
+      remainingTablesText = tablesText.slice(matchedText.length).trim();
+    }
+    joinRemainingClause = parseJoinClauses(remainingTablesText);
+  }
+
+  const whereClause = selectMatch[5] || "";
   const whereConditions = whereClause
     .split("and")
-    .map(cond => cond.trim())
-    .filter(cond => cond)
-    .map(cond => {
+    .map((cond) => cond.trim())
+    .filter((cond) => cond)
+    .map((cond) => {
       let operator, attribute, value;
 
       if (cond.toLowerCase().includes('like')) {
-        [attribute, value] = cond.split(/like/i).map(part => part.trim());
+        [attribute, value] = cond.split(/like/i).map((part) => part.trim());
         operator = 'LIKE';
       } else {
         const match = cond.match(/(.+?)(>=|<=|>|<|=)(.+)/);
@@ -140,10 +194,6 @@ function parseSelectCommand(command) {
         }
       }
 
-      if (!attribute || value === undefined) {
-        return `ERROR: Invalid condition: "${cond}". A column and value must be specified.`;
-      }
-
       const isValueQuoted = value.startsWith("'") && value.endsWith("'");
       if (isValueQuoted) {
         value = value.slice(1, -1);
@@ -152,10 +202,10 @@ function parseSelectCommand(command) {
       return {attribute, operator, value, isValueQuoted};
     });
 
-  const invalidCondition = whereConditions.find(cond => typeof cond === 'string');
+  const invalidCondition = whereConditions.find((cond) => typeof cond === 'string');
   if (invalidCondition) return invalidCondition;
 
-  return {columns, tables, whereConditions, distinct};
+  return {columns, tables, whereConditions, distinct, joinClause, joinRemainingClause};
 }
 
 module.exports = {

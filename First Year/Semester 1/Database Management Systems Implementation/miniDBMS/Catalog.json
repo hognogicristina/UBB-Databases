@@ -701,139 +701,6 @@
                     ]
                 },
                 {
-                    "tableName": "Students2",
-                    "fileName": "School_Students2",
-                    "structure": {
-                        "attributes": [
-                            {
-                                "attributeName": "StudID",
-                                "type": "int",
-                                "length": null,
-                                "isUnique": true
-                            },
-                            {
-                                "attributeName": "GroupID",
-                                "type": "int",
-                                "length": null,
-                                "isUnique": false
-                            },
-                            {
-                                "attributeName": "Name",
-                                "type": "varchar",
-                                "length": 255,
-                                "isUnique": false
-                            },
-                            {
-                                "attributeName": "Tel",
-                                "type": "varchar",
-                                "length": 255,
-                                "isUnique": false
-                            },
-                            {
-                                "attributeName": "email",
-                                "type": "varchar",
-                                "length": 255,
-                                "isUnique": false
-                            },
-                            {
-                                "attributeName": "mark",
-                                "type": "int",
-                                "length": null,
-                                "isUnique": false
-                            }
-                        ]
-                    },
-                    "primaryKey": {
-                        "pkAttributes": [
-                            "StudID"
-                        ]
-                    },
-                    "foreignKeys": [],
-                    "indexFiles": [
-                        {
-                            "indexName": "GroupID.ind",
-                            "isUnique": 0,
-                            "indexAttributes": [
-                                "GroupID"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "tableName": "Students3",
-                    "fileName": "School_Students3",
-                    "structure": {
-                        "attributes": [
-                            {
-                                "attributeName": "StudID",
-                                "type": "int",
-                                "length": null,
-                                "isUnique": true
-                            },
-                            {
-                                "attributeName": "GroupID",
-                                "type": "int",
-                                "length": null,
-                                "isUnique": false
-                            },
-                            {
-                                "attributeName": "Name",
-                                "type": "varchar",
-                                "length": 255,
-                                "isUnique": false
-                            },
-                            {
-                                "attributeName": "Tel",
-                                "type": "varchar",
-                                "length": 255,
-                                "isUnique": true
-                            },
-                            {
-                                "attributeName": "email",
-                                "type": "varchar",
-                                "length": 255,
-                                "isUnique": true
-                            },
-                            {
-                                "attributeName": "mark",
-                                "type": "int",
-                                "length": null,
-                                "isUnique": false
-                            }
-                        ]
-                    },
-                    "primaryKey": {
-                        "pkAttributes": [
-                            "StudID"
-                        ]
-                    },
-                    "foreignKeys": [],
-                    "indexFiles": [
-                        {
-                            "indexName": "Tel.ind",
-                            "isUnique": 1,
-                            "indexAttributes": [
-                                "Tel"
-                            ]
-                        },
-                        {
-                            "indexName": "email.ind",
-                            "isUnique": 1,
-                            "indexAttributes": [
-                                "email"
-                            ]
-                        },
-                        {
-                            "indexName": "GroupIDMark.ind",
-                            "isUnique": 0,
-                            "indexAttributes": [
-                                "GroupID",
-                                "mark"
-                            ]
-                        }
-                    ]
-                },
-                {
                     "tableName": "Grades",
                     "fileName": "School_Grades",
                     "structure": {
@@ -898,6 +765,173 @@
                             "indexAttributes": [
                                 "StudID",
                                 "DiscID"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tableName": "Departments",
+                    "fileName": "School_Departments",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "DepartmentID",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "DepartmentName",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "Location",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "DepartmentID"
+                        ]
+                    },
+                    "foreignKeys": [],
+                    "indexFiles": [
+                        {
+                            "indexName": "DepartmentName.ind",
+                            "isUnique": 1,
+                            "indexAttributes": [
+                                "DepartmentName"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tableName": "Groups",
+                    "fileName": "School_Groups",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "GroupID",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "GroupName",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "Year",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            },
+                            {
+                                "attributeName": "DepartmentID",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "GroupID"
+                        ]
+                    },
+                    "foreignKeys": [
+                        {
+                            "fkAttributes": [
+                                "DepartmentID"
+                            ],
+                            "references": {
+                                "refTable": "Departments",
+                                "refAttributes": [
+                                    "DepartmentID"
+                                ]
+                            }
+                        }
+                    ],
+                    "indexFiles": [
+                        {
+                            "indexName": "DepartmentID.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "DepartmentID"
+                            ]
+                        },
+                        {
+                            "indexName": "GroupName.ind",
+                            "isUnique": 1,
+                            "indexAttributes": [
+                                "GroupName"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tableName": "Subjects",
+                    "fileName": "School_Subjects",
+                    "structure": {
+                        "attributes": [
+                            {
+                                "attributeName": "SubjectID",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "SubjectName",
+                                "type": "varchar",
+                                "length": 255,
+                                "isUnique": true
+                            },
+                            {
+                                "attributeName": "DepartmentID",
+                                "type": "int",
+                                "length": null,
+                                "isUnique": false
+                            }
+                        ]
+                    },
+                    "primaryKey": {
+                        "pkAttributes": [
+                            "SubjectID"
+                        ]
+                    },
+                    "foreignKeys": [
+                        {
+                            "fkAttributes": [
+                                "DepartmentID"
+                            ],
+                            "references": {
+                                "refTable": "Departments",
+                                "refAttributes": [
+                                    "DepartmentID"
+                                ]
+                            }
+                        }
+                    ],
+                    "indexFiles": [
+                        {
+                            "indexName": "DepartmentID.ind",
+                            "isUnique": 0,
+                            "indexAttributes": [
+                                "DepartmentID"
+                            ]
+                        },
+                        {
+                            "indexName": "SubjectName.ind",
+                            "isUnique": 1,
+                            "indexAttributes": [
+                                "SubjectName"
                             ]
                         }
                     ]

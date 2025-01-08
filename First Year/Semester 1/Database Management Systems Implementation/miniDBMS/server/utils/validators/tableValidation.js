@@ -106,19 +106,45 @@ function checkColumnExists(table, tableName, columnName) {
   }
 }
 
-function validateWhereColumns(whereConditions, table) {
-  const tableColumns = table.structure.attributes.map(attr => attr.attributeName);
+function validateWhereColumns(whereConditions, tableAliasMap, isJoinOperation = false) {
   const invalidColumns = [];
 
-  if (whereConditions.length === 0) return null;
-  for (const condition of whereConditions) {
-    if (!tableColumns.includes(condition.attribute)) {
-      invalidColumns.push(condition.attribute);
+  whereConditions.forEach((condition) => {
+    let {attribute} = condition;
+
+    if (isJoinOperation) {
+      const aliasMatch = attribute.match(/^(\w+)\.(\w+)$/);
+      if (aliasMatch) {
+        const [_, alias, columnName] = aliasMatch;
+        const table = tableAliasMap[alias];
+
+        if (!table) {
+          invalidColumns.push(`${alias}.${columnName} (invalid alias)`);
+        } else {
+          const tableColumns = table.structure.attributes.map((attr) => attr.attributeName);
+          if (!tableColumns.includes(columnName)) {
+            invalidColumns.push(columnName);
+          }
+          condition.attribute = columnName;
+        }
+      } else {
+        invalidColumns.push(`${attribute} (missing alias for join)`);
+      }
+    } else {
+      const table = tableAliasMap[Object.keys(tableAliasMap)[0]];
+      const tableColumns = table.structure.attributes.map((attr) => attr.attributeName);
+
+      if (!tableColumns.includes(attribute)) {
+        invalidColumns.push(attribute);
+      }
     }
-  }
+  });
 
   if (invalidColumns.length > 0) {
-    return `ERROR: The following columns do not exist in table "${table.tableName}": ${invalidColumns.join(', ')}`;
+    const tableNames = Object.values(tableAliasMap)
+      .map((table) => `"${table.tableName}"`)
+      .join(", ");
+    return `ERROR: The following columns do not exist in table(s) ${tableNames}: ${invalidColumns.join(", ")}`;
   }
 
   return null;
