@@ -10,7 +10,6 @@ const rl = readline.createInterface({
 
 client.connect(8989, '127.0.0.1', () => {
   console.log('Connected to the server');
-  client.write('use School'); // for testing purposes Lab 4
   askCommand();
 });
 

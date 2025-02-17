@@ -90,7 +90,6 @@ async function performJoin(mainTableData, joinTableData, joinType, onConditions,
   const joinIsIndexed = joinTable.indexFiles.find((index) => index.indexAttributes.includes(joinColumnName));
 
   if (mainIsIndexed && joinIsIndexed) {
-    console.log(`Using Indexed Nested Loop Join for ${joinType.toUpperCase()}`);
     result = await indexedNestedLoopJoin(
       mainTableData,
       joinTableData,
@@ -104,7 +103,6 @@ async function performJoin(mainTableData, joinTableData, joinType, onConditions,
       joinType
     );
   } else {
-    console.log(`Using Sort-Merge Join for ${joinType.toUpperCase()}`);
     result = sortMergeJoin(
       mainTableData,
       joinTableData,

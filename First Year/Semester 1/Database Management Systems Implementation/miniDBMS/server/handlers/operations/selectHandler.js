@@ -10,6 +10,7 @@ const {
   whereCond
 } = require("../../utils/helpers/indexOptimization");
 const {performJoin, applyRemainingJoins} = require("../../utils/helpers/joinAlgorithms");
+const {applyGroupBy, applyHaving, applyOrderBy} = require("../../utils/helpers/groupByHaving");
 
 async function handleSelect(command, socket) {
   const currentDatabase = getCurrentDatabase();
@@ -22,7 +23,17 @@ async function handleSelect(command, socket) {
       return socket.write(parsedCommand);
     }
 
-    const {tables, columns, whereConditions, distinct, joinClause, joinRemainingClause} = parsedCommand;
+    const {
+      tables,
+      columns,
+      whereConditions,
+      distinct,
+      joinClause,
+      joinRemainingClause,
+      groupByClause,
+      havingConditions,
+      orderByClause
+    } = parsedCommand;
 
     const tableAliasMap = {};
     for (const tableEntry of tables) {
@@ -95,6 +106,18 @@ async function handleSelect(command, socket) {
       );
     }
 
+    if (groupByClause.length > 0) {
+      result = applyGroupBy(result, groupByClause, columns);
+
+      if (havingConditions.length > 0) {
+        result = applyHaving(result, havingConditions);
+      }
+    }
+
+    if (orderByClause.length > 0) {
+      result = applyOrderBy(result, orderByClause);
+    }
+
     const selectedColumns = columns.includes('*')
       ? Object.values(tableAliasMap).flatMap((table) =>
         table.structure.attributes.map((attr) => `${tableAliasMap[table.tableName].alias}.${attr.attributeName}`)
@@ -126,7 +149,6 @@ async function handleSelect(command, socket) {
     );
     socket.write('check select.txt');
   } catch (error) {
-    console.error("ERROR:", error);
     socket.write("ERROR: Failed to execute SELECT command");
   }
 }

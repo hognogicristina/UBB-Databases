@@ -131,7 +131,8 @@ const parseJoinClauses = (text) => {
 function parseSelectCommand(command) {
   const commandText = command.join(" ");
   const joinCount = (commandText.match(/\bjoin\b/gi) || []).length;
-  const selectMatch = commandText.match(/select\s+(distinct\s+)?(.+?)\s+from\s+(.+?)(\s+where\s+(.+))?$/i);
+  const selectMatch = commandText.match(/select\s+(distinct\s+)?(.+?)\s+from\s+(.+?)(\s+where\s+(.+?))?(\s+group\s+by\s+(.+?))?(\s+having\s+(.+?))?(\s+order\s+by\s+(.+?))?$/i);
+
   if (!selectMatch) return "ERROR: Invalid SELECT command";
 
   const distinct = Boolean(selectMatch[1]);
@@ -205,7 +206,51 @@ function parseSelectCommand(command) {
   const invalidCondition = whereConditions.find((cond) => typeof cond === 'string');
   if (invalidCondition) return invalidCondition;
 
-  return {columns, tables, whereConditions, distinct, joinClause, joinRemainingClause};
+  const groupByClause = selectMatch[7] ? selectMatch[7].trim().split(',').map((col) => col.trim()) : [];
+  const havingClause = selectMatch[9] || "";
+
+  if (havingClause && groupByClause.length === 0) {
+    return "ERROR: HAVING clause cannot be used without a GROUP BY clause.";
+  }
+
+  const havingConditions = havingClause
+    .split("and")
+    .map((cond) => cond.trim())
+    .filter((cond) => cond)
+    .map((cond) => {
+      const aggregateMatch = cond.match(
+        /(count|avg|sum|max|min)\((.+?)\)\s*(>=|<=|>|<|=)\s*(.+)/
+      );
+
+      if (aggregateMatch) {
+        return {
+          isAggregate: true,
+          aggregateFunction: aggregateMatch[1].toLowerCase(),
+          attribute: aggregateMatch[2].trim(),
+          operator: aggregateMatch[3],
+          value: parseFloat(aggregateMatch[4]),
+        };
+      }
+
+      return `ERROR: Invalid HAVING condition: "${cond}"`;
+    });
+
+  const invalidHavingCondition = havingConditions.find((cond) => typeof cond === 'string');
+  if (invalidHavingCondition) return invalidHavingCondition;
+
+  const orderByClause = selectMatch[11] ? selectMatch[11].trim().split(',').map((col) => col.trim()) : [];
+
+  return {
+    columns,
+    tables,
+    whereConditions,
+    distinct,
+    joinClause,
+    joinRemainingClause,
+    groupByClause,
+    havingConditions,
+    orderByClause,
+  };
 }
 
 module.exports = {

@@ -154,12 +154,29 @@ select Name from Students3 where GroupID = 243
 select * from Grades where StudID = 345 and DiscID like 'PF%'
 
 Laboratory 5
+select S.GroupID, G.StudID, G.Grade from Students S full join Grades G on S.StudID = G.StudID where G.Grade > 5
 select S.GroupID, S.Name, G.GroupID, G.Year from Students S full join Groups G on S.GroupID = G.GroupID where G.Year > 2
 select G.DepartmentID, G.GroupName, G.Year, S.DepartmentID, S.SubjectName from Groups G right join Subjects S on G.DepartmentID = S.DepartmentID where S.SubjectName like '%_U%'
 select G.DepartmentID, G.GroupName, G.Year, S.DepartmentID, S.SubjectName from Groups G inner join Subjects S on G.DepartmentID = S.DepartmentID where S.SubjectName like '%_U%' and G.Year > 2
 
 select distinct S.GroupID, G.GroupID, G.DepartmentID, D.DepartmentID from Students S inner join Groups G on S.GroupID = G.GroupID inner join Departments D on G.DepartmentID = D.DepartmentID
 select distinct S.GroupID, G.GroupID, G.DepartmentID, D.DepartmentID, D.DepartmentID, Ss.DepartmentID from Students S inner join Groups G on S.GroupID = G.GroupID inner join Departments D on G.DepartmentID = D.DepartmentID inner join Subjects Ss on D.DepartmentID = Ss.DepartmentID
+
+Laboratory 6
+select G.GroupName, Gg.Grade from Groups G inner join Students S on G.GroupID = S.GroupID inner join Grades Gg on S.StudID = Gg.StudID
+select G.GroupName, avg(Gg.Grade) from Groups G inner join Students S on G.GroupID = S.GroupID inner join Grades Gg on S.StudID = Gg.StudID group by G.GroupName
+
+select G.Grade, S.mark from Students S inner join Grades G on S.StudID = G.StudID group by G.Grade, S.mark having min(S.mark) = 2 and max(G.Grade) > 5
+select G.Grade, avg(S.mark) from Students S inner join Grades G on S.StudID = G.StudID group by G.Grade having max(G.Grade) > 5
+
+select G.GroupName, count(Gg.Grade) from Groups G inner join Students S on G.GroupID = S.GroupID inner join Grades Gg on S.StudID = Gg.StudID group by G.GroupName having count(Gg.Grade) > 1
+select S.Name, G.GroupName, avg(Gg.Grade) from Groups G inner join Students S on G.GroupID = S.GroupID inner join Grades Gg on S.StudID = Gg.StudID group by G.GroupName having avg(Gg.Grade) > 5
+select S.Name, G.GroupName, avg(Gg.Grade) from Groups G inner join Students S on G.GroupID = S.GroupID inner join Grades Gg on S.StudID = Gg.StudID where S.Name like 'A%' group by G.GroupName having avg(Gg.Grade) > 5
+
+select S.Name, G.GroupName, avg(Gg.Grade) from Groups G inner join Students S on G.GroupID = S.GroupID inner join Grades Gg on S.StudID = Gg.StudID where S.Name like 'A%' group by G.GroupName having avg(Gg.Grade) > 5 order by S.Name
+select S.Name, S.Tel, G.GroupName, avg(Gg.Grade) from Groups G inner join Students S on G.GroupID = S.GroupID inner join Grades Gg on S.StudID = Gg.StudID where S.Tel like '4%' group by G.GroupName having avg(Gg.Grade) > 5 order by S.Name
+select S.Name, S.Tel, G.GroupName, avg(Gg.Grade) from Groups G inner join Students S on G.GroupID = S.GroupID inner join Grades Gg on S.StudID = Gg.StudID where S.Tel like '4%' and S.Name like 'A%' group by G.GroupName having avg(Gg.Grade) > 5 order by S.Name
+select G.GroupName, Gg.Grade from Groups G inner join Students S on G.GroupID = S.GroupID inner join Grades Gg on S.StudID = Gg.StudID order by G.GroupName, Gg.Grade
 
 db.School_Students.find()
 db.School_Grades.find()
