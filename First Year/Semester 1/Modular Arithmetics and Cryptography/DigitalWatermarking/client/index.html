@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Watermarking Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #6a11cb, #2575fc);
+      color: #fff;
+      padding: 20px;
+    }
+
+    h1, h2, h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 0 auto 30px auto;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px 0;
+      font-weight: bold;
+    }
+
+    input[type="file"],
+    input[type="number"],
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #4caf50;
+      color: #fff;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .image-preview {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    img {
+      max-width: 100%;
+      border: 4px solid rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px;
+    }
+
+    .info {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 15px;
+      border-radius: 12px;
+      margin: 10px auto;
+      text-align: center;
+      max-width: 500px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .info strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .info span {
+      font-size: 1.2rem;
+      color: #ffd700;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.4);
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Watermarking Demo</h1>
+
+<h2>Invisible (Modular) Watermark</h2>
+<form id="watermark-form">
+  <label for="image-input">Select an Image</label>
+  <input type="file" id="image-input" name="image" accept="image/*" required/>
+
+  <label for="key-input">Watermark Key (K)</label>
+  <input type="number" id="key-input" name="key" value="5"/>
+
+  <label for="modulus-input">Modulus (N)</label>
+  <input type="number" id="modulus-input" name="modulus" value="256"/>
+
+  <button type="submit">Apply Invisible Watermark</button>
+</form>
+
+<div class="image-preview">
+  <h3>Invisible Watermarked Image Preview</h3>
+  <img id="watermarked-image" alt="Invisible Watermarked"/>
+</div>
+
+<div class="image-preview">
+  <button
+    id="decode-watermark-btn"
+    style="background: #ff5722; width: 300px; margin: 0 auto; display: block;">
+    Remove Invisible Watermark
+  </button>
+</div>
+
+<div class="info">
+  <strong>Original Pixel Value (M):</strong>
+  <span id="m-value">-</span>
+  <strong>Watermarked Pixel Value (W):</strong>
+  <span id="w-value">-</span>
+</div>
+
+<hr/>
+
+<h2>Visible Watermark (Encode)</h2>
+<p style="text-align:center; margin-bottom:10px;">
+  Use either "Text Watermark" or "Upload Watermark Image."
+</p>
+<form id="visible-watermark-form">
+  <label for="main-image">Main Image:</label>
+  <input type="file" id="main-image" name="image" accept="image/*" required/>
+
+  <label for="watermark-text">Text Watermark:</label>
+  <input type="text" id="watermark-text" name="text" placeholder="Enter text to watermark"/>
+
+  <label for="watermark-image">OR Upload Watermark Image:</label>
+  <input type="file" id="watermark-image" name="watermark" accept="image/*"/>
+
+  <label for="left">Watermark Left (px):</label>
+  <input type="number" id="left" name="left" value="0"/>
+
+  <label for="top">Watermark Top (px):</label>
+  <input type="number" id="top" name="top" value="0"/>
+
+  <label for="wmWidth">Watermark Width (optional):</label>
+  <input type="number" id="wmWidth" name="wmWidth" value="0"/>
+
+  <label for="wmHeight">Watermark Height (optional):</label>
+  <input type="number" id="wmHeight" name="wmHeight" value="0"/>
+
+  <button type="submit">Add Visible Watermark</button>
+</form>
+
+<div class="image-preview">
+  <h3>Visible Watermarked Image Preview</h3>
+  <img id="visible-watermarked-preview" alt="Visible Watermarked"/>
+</div>
+
+<div class="image-preview">
+  <button
+    id="remove-watermark-btn"
+    style="background: #ff5722; width: 300px; margin: 0 auto; display: block;">
+    Remove Watermark (Revert)
+  </button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const formInvisible = document.getElementById('watermark-form');
+    const imageInput = document.getElementById('image-input');
+    const watermarkedImage = document.getElementById('watermarked-image');
+    const mValueSpan = document.getElementById('m-value');
+    const wValueSpan = document.getElementById('w-value');
+
+    window.watermarkedNoCircle = null;
+
+    formInvisible.addEventListener('submit', async (evt) => {
+      evt.preventDefault();
+      const file = imageInput.files[0];
+      if (!file) {
+        alert('Please select an image first.');
+        return;
+      }
+
+      const keyValue = document.getElementById('key-input').value || '0';
+      const modulusValue = document.getElementById('modulus-input').value || '256';
+
+      const formData = new FormData();
+      formData.append('image', file);
+      formData.append('key', keyValue);
+      formData.append('modulus', modulusValue);
+
+      try {
+        const response = await fetch('/watermark', {
+          method: 'POST',
+          body: formData
+        });
+        if (!response.ok) {
+          throw new Error('Server error');
+        }
+        const data = await response.json();
+
+        watermarkedImage.src = `data:image/png;base64,${data.imageBase64}`;
+
+        window.watermarkedNoCircle = data.imageBase64NoCircle;
+
+        mValueSpan.textContent = data.mValue;
+        wValueSpan.textContent = data.wValue;
+      } catch (err) {
+        console.error(err);
+        alert('Error applying invisible watermark.');
+      }
+    });
+
+    const decodeBtn = document.getElementById('decode-watermark-btn');
+    decodeBtn.addEventListener('click', async () => {
+      if (!window.watermarkedNoCircle) {
+        alert('No watermarked image to decode. Please apply the invisible watermark first!');
+        return;
+      }
+
+      const keyValue = document.getElementById('key-input').value || '0';
+      const modulusValue = document.getElementById('modulus-input').value || '256';
+
+      try {
+        const response = await fetch('/decode-watermark', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            imageBase64: window.watermarkedNoCircle,
+            key: keyValue,
+            modulus: modulusValue
+          })
+        });
+        const data = await response.json();
+        if (data.error) {
+          alert(data.error);
+        } else {
+          watermarkedImage.src = `data:image/png;base64,${data.decodedBase64}`;
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Error decoding invisible watermark.');
+      }
+    });
+
+    const encodeForm = document.getElementById('visible-watermark-form');
+    const previewVisible = document.getElementById('visible-watermarked-preview');
+    let originalVisibleImageData = null;
+
+    encodeForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const mainFile = document.getElementById('main-image').files[0];
+      if (!mainFile) {
+        alert('Please select the main image for watermarking');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        originalVisibleImageData = ev.target.result;
+      };
+      reader.readAsDataURL(mainFile);
+
+      const formData = new FormData(encodeForm);
+
+      try {
+        const response = await fetch('/encode-visible', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await response.json();
+        if (data.error) {
+          alert(data.error);
+        } else {
+          previewVisible.src = `data:image/png;base64,${data.watermarked}`;
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Error applying visible watermark.');
+      }
+    });
+
+    const removeBtn = document.getElementById('remove-watermark-btn');
+    removeBtn.addEventListener('click', () => {
+      if (originalVisibleImageData) {
+        previewVisible.src = originalVisibleImageData;
+      } else {
+        alert('No watermarked image to revert. Please watermark an image first!');
+      }
+    });
+  });
+</script>
+</body>
+</html>
