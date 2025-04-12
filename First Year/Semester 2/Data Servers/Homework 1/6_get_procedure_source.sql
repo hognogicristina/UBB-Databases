@@ -1,0 +1,11 @@
+CREATE OR REPLACE PROCEDURE Get_Procedure_Source(p_schema_name IN VARCHAR2, p_procedure_name IN VARCHAR2, rc OUT SYS_REFCURSOR) IS
+BEGIN
+    OPEN rc FOR
+        SELECT TEXT FROM ALL_SOURCE
+        WHERE OWNER = UPPER(p_schema_name) AND NAME = UPPER(p_procedure_name)
+        ORDER BY LINE;
+END;
+
+SELECT TEXT FROM ALL_SOURCE
+WHERE OWNER = UPPER('HAIRBD0028') AND NAME = UPPER('Get_Procedure_Source')
+ORDER BY LINE;
