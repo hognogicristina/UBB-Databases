@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="form-container">
+  <h2>Login</h2>
+  <form id="loginForm">
+    <label>
+      <input type="text" id="username" name="username" placeholder="Username" required>
+    </label><br>
+    <label>
+      <input type="password" id="password" name="password" placeholder="Password" required>
+    </label><br>
+    <button type="submit">Login</button>
+  </form>
+  <p>Don't have an account? <a href="register.html">Register here</a></p>
+</div>
+<script>
+  const loginForm = document.getElementById('loginForm');
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    fetch('/login', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({username, password})
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+          window.location.href = '/shopping.html';
+        } else {
+          alert('Invalid credentials.');
+        }
+      })
+      .catch(error => {
+        console.error('Error during login:', error);
+        alert('There was an error processing your login.');
+      });
+  });
+</script>
+</body>
+</html>

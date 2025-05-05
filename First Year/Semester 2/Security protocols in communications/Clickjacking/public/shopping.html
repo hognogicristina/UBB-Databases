@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Shopping Site</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #logoutButton {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #f44336;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="euro-button-wrapper">
+  <div class="fund-details" id="hoverFundDetails">
+    <p><strong>Fund Trust: <span id="fundTrust"></span></strong></p>
+  </div>
+  <button class="euro-button">€</button>
+</div>
+
+<button id="logoutButton" onclick="logout()">⏻</button>
+
+<header>
+  <h1>Welcome to TrendyClothes</h1>
+  <p>Your own shop for trendy outfits</p>
+</header>
+
+<button id="realButton" class="claim-button">🎁 Click to Claim Prize 💸</button>
+
+<main class="shop-container">
+  <h2>Clothing Items</h2>
+  <div class="products">
+    <div class="product">
+      <img src="images/tshirt.jpg" alt="T-shirt">
+      <div class="product-info">
+        <p class="product-name">T‑shirt</p>
+        <button class="view-btn">View Product</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="images/jeans.jpg" alt="Jeans">
+      <div class="product-info">
+        <p class="product-name">Jeans</p>
+        <button class="view-btn">View Product</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="images/jacket.jpg" alt="Jacket">
+      <div class="product-info">
+        <p class="product-name">Jacket</p>
+        <button class="view-btn">View Product</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="images/sneakers.jpg" alt="Sneakers">
+      <div class="product-info">
+        <p class="product-name">Sneakers</p>
+        <button class="view-btn">View Product</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="images/hat.jpg" alt="Hat">
+      <div class="product-info">
+        <p class="product-name">Hat</p>
+        <button class="view-btn">View Product</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="images/sunglasses.jpg" alt="Sunglasses">
+      <div class="product-info">
+        <p class="product-name">Sunglasses</p>
+        <button class="view-btn">View Product</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const token = localStorage.getItem('token');
+  if (!token) {
+    window.location.href = '/login.html';
+  }
+
+  function authFetch(url, options = {}) {
+    options.headers = options.headers || {};
+    options.headers['Authorization'] = 'Bearer ' + token;
+    return fetch(url, options);
+  }
+
+  function updateFundTrust() {
+    authFetch('/fundTrust')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('fundTrust').innerText = `€${data.fundTrust}`;
+        if (data.fundTrust === 0) {
+          setTimeout(() => {
+            alert('Your funds have been stolen!');
+          }, 10000);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching fund trust:', error);
+      });
+  }
+
+  updateFundTrust();
+
+  const ws = new WebSocket('ws://localhost:3000');
+  ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    if (data.type === 'updateFunds') {
+      updateFundTrust();
+    }
+  };
+  ws.onerror = (err) => console.error('WebSocket error:', err);
+
+  document.getElementById('realButton').addEventListener('click', (e) => {
+    e.preventDefault();
+    authFetch('/claimPrize')
+      .then(response => response.text())
+      .then(result => {
+        console.log('Claim Prize result:', result);
+      })
+      .catch(error => console.error('Error claiming prize:', error));
+  });
+
+  document.getElementById('logoutButton').addEventListener('click', () => {
+    localStorage.removeItem('token');
+    window.location.href = '/logout';
+  });
+</script>
+</body>
+</html>

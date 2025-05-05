@@ -1,0 +1,253 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, serif;
+  margin: 0;
+  padding: 0;
+  background: #f0f2f5;
+}
+
+header {
+  text-align: center;
+  background: #000;
+  color: #fff;
+  padding: 30px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.shop-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.product {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  width: 200px;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+}
+
+.product img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.product-name {
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0;
+  text-align: center;
+}
+
+.view-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #007aff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+}
+
+.view-btn:hover {
+  background-color: #005bb5;
+}
+
+button, #fakeButton {
+  display: block;
+  width: 220px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 40px auto 10px;
+  background: #007aff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover, #fakeButton:hover {
+  background: #005bb5;
+}
+
+.form-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+form input {
+  width: 250px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #007aff;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background-color: #005bb5;
+}
+
+#prizeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.claim-button {
+  display: block;
+  margin: 40px auto;
+  width: 220px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  box-shadow: 0 8px 24px rgba(255, 75, 43, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/*.claim-button {*/
+/*  display: inline-block;*/
+/*  padding: 10px 20px;*/
+/*  background-color: #007bff;*/
+/*  color: #fff;*/
+/*  text-decoration: none;*/
+/*  border-radius: 4px;*/
+/*  font-size: 16px;*/
+/*  cursor: pointer;*/
+/*}*/
+
+.claim-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-25deg);
+  transition: left 0.5s ease;
+}
+
+.claim-button:hover::before {
+  left: 130%;
+}
+
+.claim-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  box-shadow: 0 10px 30px rgba(255, 75, 43, 0.6);
+}
+
+.euro-button-wrapper {
+  position: fixed;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1000;
+}
+
+.euro-button {
+  width: 50px;
+  height: 50px;
+  background-color: #007aff;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.euro-button:hover {
+  background-color: #005bb5;
+}
+
+.fund-details {
+  background: white;
+  color: #333;
+  padding: 1px 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-right: -10px;
+  margin-top: 30px;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.6s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.euro-button-wrapper:hover .fund-details {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}

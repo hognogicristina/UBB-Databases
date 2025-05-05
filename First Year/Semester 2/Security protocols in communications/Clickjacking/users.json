@@ -1,0 +1,12 @@
+[
+  {
+    "username": "attacker",
+    "password": "1",
+    "fundTrust": 10000
+  },
+  {
+    "username": "a",
+    "password": "a",
+    "fundTrust": 0
+  }
+]
