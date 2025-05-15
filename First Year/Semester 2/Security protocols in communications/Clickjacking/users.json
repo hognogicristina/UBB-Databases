@@ -2,11 +2,11 @@
   {
     "username": "attacker",
     "password": "1",
-    "fundTrust": 10000
+    "fundTrust": 0
   },
   {
     "username": "a",
     "password": "a",
-    "fundTrust": 0
+    "fundTrust": 10000
   }
 ]
