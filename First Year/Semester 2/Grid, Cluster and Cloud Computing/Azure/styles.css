@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 0.2em;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 1.5em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 2em;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 100px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+form button {
+  padding: 12px;
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  font-size: 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+form button:hover {
+  background-color: #005ea6;
+}
+
+hr {
+  margin: 2em 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+.entry {
+  background-color: #f4f6f8;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+}
+
+.entry-title-author {
+  flex-grow: 1;
+}
+
+.entry-timestamp {
+  color: #666;
+  font-size: 0.8em;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.entry-text {
+  margin-bottom: 10px;
+}
+
+.entry-actions button {
+  background: none;
+  border: none;
+  color: #0078d7;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-right: 10px;
+  padding: 5px 8px;
+}
+
+.entry-actions button:hover {
+  text-decoration: underline;
+}
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 8px 12px;
+  border: none;
+  background-color: #0078d7;
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}

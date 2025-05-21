@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BookTalk – Share Your Thoughts</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="container">
+  <h1>📚 BookTalk</h1>
+  <p class="subtitle">Leave your thoughts on books you've read. Discover what others think too!</p>
+
+  <form id="feedback-form">
+    <input type="text" id="title" placeholder="Book Title" required/>
+    <input type="text" id="author" placeholder="Author" required/>
+    <textarea id="feedback" placeholder="What did you think?" required></textarea>
+    <button type="submit">Submit Feedback</button>
+  </form>
+
+  <hr/>
+
+  <h2>💬 Community Feedback</h2>
+  <div id="feedback-list">
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
