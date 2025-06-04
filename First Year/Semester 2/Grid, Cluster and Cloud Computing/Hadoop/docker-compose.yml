@@ -1,0 +1,108 @@
+version: '3'
+
+services:
+  namenode:
+    build: ./namenode
+    image: hadoop-namenode
+    platform: linux/amd64
+    container_name: namenode
+    restart: always
+    ports:
+      - 9870:9870
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop.env
+
+  datanode_1:
+    build: ./datanode
+    image: hadoop-datanode
+    platform: linux/amd64
+    container_name: datanode_1
+    restart: always
+    volumes:
+      - hadoop_datanode_1:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: 'namenode:9870'
+    env_file:
+      - ./hadoop.env
+    depends_on:
+      - namenode
+
+  datanode_2:
+    build: ./datanode
+    image: hadoop-datanode
+    platform: linux/amd64
+    container_name: datanode_2
+    restart: always
+    volumes:
+      - hadoop_datanode_2:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: 'namenode:9870'
+    env_file:
+      - ./hadoop.env
+    depends_on:
+      - namenode
+
+  datanode_3:
+    build: ./datanode
+    image: hadoop-datanode
+    platform: linux/amd64
+    container_name: datanode_3
+    restart: always
+    volumes:
+      - hadoop_datanode_3:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: 'namenode:9870'
+    env_file:
+      - ./hadoop.env
+    depends_on:
+      - namenode
+
+  resourcemanager:
+    build: ./resourcemanager
+    image: hadoop-resourcemanager
+    platform: linux/amd64
+    container_name: resourcemanager
+    restart: always
+    ports:
+      - 8088:8088
+    environment:
+      SERVICE_PRECONDITION: 'namenode:9000 namenode:9870 datanode_1:9864 datanode_2:9864 datanode_3:9864'
+    env_file:
+      - ./hadoop.env
+
+  nodemanager1:
+    build: ./nodemanager
+    image: hadoop-nodemanager
+    platform: linux/amd64
+    container_name: nodemanager
+    restart: always
+    environment:
+      SERVICE_PRECONDITION: 'namenode:9000 namenode:9870 datanode_1:9864 datanode_2:9864 datanode_3:9864 resourcemanager:8088'
+    env_file:
+      - ./hadoop.env
+
+  historyserver:
+    build: ./historyserver
+    image: hadoop-historyserver
+    platform: linux/amd64
+    container_name: historyserver
+    restart: always
+    ports:
+      - 19888:19888
+    environment:
+      SERVICE_PRECONDITION: 'resourcemanager:8088'
+    env_file:
+      - ./hadoop.env
+    depends_on:
+      - resourcemanager
+
+volumes:
+  hadoop_namenode:
+  hadoop_datanode_1:
+  hadoop_datanode_2:
+  hadoop_datanode_3:
+  hadoop-historyserver:
