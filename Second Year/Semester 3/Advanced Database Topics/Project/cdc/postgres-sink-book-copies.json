@@ -1,0 +1,24 @@
+{
+  "name": "postgres-sink-book-copies",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "tasks.max": "1",
+    "connection.url": "jdbc:postgresql://postgres:5432/debezium_postgres",
+    "connection.user": "debezium_user",
+    "connection.password": "master",
+    "topics": "mysql.library.BOOK_COPIES",
+    "table.name.format": "book_copies",
+    "insert.mode": "upsert",
+    "pk.mode": "record_value",
+    "pk.fields": "COPY_ID",
+    "auto.create": "false",
+    "auto.evolve": "false",
+    "delete.enabled": "false",
+    "transforms": "unwrap",
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "transforms.unwrap.drop.tombstones": "true",
+    "consumer.override.auto.offset.reset": "earliest",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": true
+  }
+}
