@@ -1,47 +1,47 @@
-# Documentație Proiect  
+# Project Documentation  
 ## CDC MySQL → Kafka (Debezium) → PostgreSQL
 
 ---
 
-## 1. Scopul proiectului
+## 1. Project Purpose
 
-Acest proiect implementează o **replicare în timp real** a modificărilor dintr-o bază de date **MySQL** către **PostgreSQL**, folosind:
+This project implements **real-time replication** of data changes from a **MySQL** database to **PostgreSQL**, using:
 
-- **Debezium** (pentru CDC din binlog-ul MySQL)
-- **Apache Kafka** (ca bus de evenimente)
-- **Kafka Connect** (pentru rularea conectorilor)
-- **Confluent JDBC Sink Connector** (pentru scrierea în PostgreSQL)
-- **Kafka UI** (pentru vizualizarea topic-urilor și mesajelor)
+- **Debezium** (for CDC from the MySQL binlog)
+- **Apache Kafka** (event streaming platform)
+- **Kafka Connect** (for running connectors)
+- **Confluent JDBC Sink Connector** (for writing data into PostgreSQL)
+- **Kafka UI** (for inspecting topics and messages)
 
-**Obiectiv:**  
-Orice `INSERT`, `UPDATE` și `DELETE` făcut în MySQL să apară automat în PostgreSQL.
-
----
-
-## 2. Arhitectură și flux de date
-
-- **MySQL** – sursa. Debezium citește schimbările din *binlog*.
-- **Debezium MySQL Connector (Source)** – transformă schimbările din binlog în mesaje Kafka.
-- **Kafka** – transportă evenimentele CDC în topic-uri.
-- **JDBC Sink Connector (Postgres)** – consumă topic-urile și aplică schimbările în PostgreSQL.
-- **Kafka UI** – interfață web pentru inspectarea topic-urilor și mesajelor.
-- **PostgreSQL** – destinația (replica).
+**Goal:**  
+Any `INSERT`, `UPDATE`, or `DELETE` executed in MySQL should automatically appear in PostgreSQL.
 
 ---
 
-## 3. Tehnologii folosite
+## 2. Architecture and Data Flow
+
+- **MySQL** – source database. Debezium reads changes from the binlog.
+- **Debezium MySQL Connector (Source)** – converts binlog changes into Kafka messages.
+- **Kafka** – transports CDC events through topics.
+- **JDBC Sink Connector (PostgreSQL)** – consumes Kafka topics and applies changes to PostgreSQL.
+- **Kafka UI** – web interface for inspecting topics and messages.
+- **PostgreSQL** – destination database (replica).
+
+---
+
+## 3. Technologies Used
 
 - Docker / Docker Compose  
 - Kafka + Zookeeper (Confluent images)  
 - Debezium Connect: `quay.io/debezium/connect:3.3.2.Final`  
-- Confluent JDBC Sink Connector (instalat în imaginea Connect)  
+- Confluent JDBC Sink Connector (installed in the Connect image)  
 - MySQL `8.0.36`  
 - PostgreSQL `16`  
 - Kafka UI: `provectuslabs/kafka-ui`
 
 ---
 
-## 4. Configurarea mediului (Docker Compose)
+## 4. Environment Setup (Docker Compose)
 
 ```bash
 docker compose down -v
@@ -51,19 +51,19 @@ docker compose up -d
 
 ---
 
-## 5. Configurarea MySQL pentru Debezium
+## 5. MySQL Configuration for Debezium
 
-MySQL trebuie să aibă:
+MySQL must have the following enabled:
 
 * `binlog-format=ROW`
-* `log-bin` activ
-* `server-id` setat
+* `log-bin` enabled
+* `server-id` configured
 
-Acestea sunt configurate în `docker-compose.yml` în secțiunea `command:`.
+These settings are defined in `docker-compose.yml` under the `command:` section.
 
-Debezium are nevoie să poată citi poziția binlog-ului și metadatele pentru snapshot.
+Debezium needs access to binlog positions and metadata in order to perform snapshots and stream changes.
 
-Intră în MySQL ca `root` și acordă privilegiile necesare:
+Log into MySQL as `root` and grant the required privileges:
 
 ```powershell
 Get-Content .\mysql_grants.sql | docker exec -i cdc-mysql-1 mysql -u root -proot
@@ -71,20 +71,20 @@ Get-Content .\mysql_grants.sql | docker exec -i cdc-mysql-1 mysql -u root -proot
 
 ---
 
-## 6. Crearea schemelor (tabele) în MySQL și PostgreSQL
+## 6. Schema Creation (MySQL and PostgreSQL)
 
-> **Important:** Debezium nu creează tabele.
-> Conectorii replică **doar modificări de date**, nu migrează schema.
+> **Important:** Debezium does **not** create database schemas.
+> Connectors replicate **data changes only**, not table structures.
 
-Tabelele trebuie create **manual** în ambele baze de date.
+All tables must be created **manually** in both databases.
 
-### MySQL (source)
+### MySQL (Source)
 
 ```powershell
 Get-Content .\create_database.sql | docker exec -i cdc-mysql-1 mysql -u root -proot
 ```
 
-### PostgreSQL (destination)
+### PostgreSQL (Destination)
 
 ```powershell
 Get-Content .\schema_postgres.sql -Raw | docker exec -i cdc-postgres-1 psql -U debezium_user -d debezium_postgres
@@ -92,11 +92,11 @@ Get-Content .\schema_postgres.sql -Raw | docker exec -i cdc-postgres-1 psql -U d
 
 ---
 
-## 7. Crearea conectorilor Kafka Connect
+## 7. Creating Kafka Connect Connectors
 
-### Conector MySQL Source
+### MySQL Source Connector
 
-Creează fișierul `mysql-source.json`, apoi rulează:
+Create the `mysql-source.json` file, then register the connector:
 
 ```powershell
 Invoke-RestMethod `
@@ -106,44 +106,44 @@ Invoke-RestMethod `
   -Body (Get-Content .\mysql-source.json -Raw)
 ```
 
-Acest conector:
+This connector:
 
-* face snapshot inițial (opțional),
-* publică evenimente CDC în topic-uri de forma:
+* performs an initial snapshot (optional),
+* publishes CDC events to topics with the format:
 
 ```
-mysql.<db>.<table>
+mysql.<database>.<table>
 ```
 
 ---
 
-## 8. Vizualizarea mesajelor în Kafka UI
+## 8. Viewing Messages in Kafka UI
 
-Kafka UI rulează la:
+Kafka UI is available at:
 👉 [http://localhost:8081](http://localhost:8081)
 
-### Pași:
+### Steps:
 
-1. Selectezi clusterul local
-2. Meniul **Topics**
-3. Cauți topic-ul:
+1. Select the local cluster
+2. Open the **Topics** menu
+3. Search for the topic:
 
    ```
    mysql.library.AUTHORS
    ```
-4. Intri pe tab-ul **Messages**
-5. Selectezi:
+4. Open the **Messages** tab
+5. Select:
 
    * partition: `0`
    * offset: `0`
    * limit: `50`
-6. Click pe **Search**
+6. Click **Search**
 
 ---
 
-## 9. JDBC Sink către PostgreSQL
+## 9. JDBC Sink Connector to PostgreSQL
 
-Creează conectorul PostgreSQL:
+Create the PostgreSQL sink connector:
 
 ```powershell
 Invoke-RestMethod `
@@ -155,21 +155,21 @@ Invoke-RestMethod `
 
 ---
 
-## 10. Testare end-to-end
+## 10. End-to-End Testing
 
-### Insert în MySQL
+### Insert Data into MySQL
 
 ```bash
 docker exec -i cdc-mysql-1 mysql -u root -proot -D library \
   -e "INSERT INTO AUTHORS (AUTHOR_ID, AUTHOR_NAME, NATIONALITY) VALUES (1, 'J.K.Rowling', 'UK');"
 ```
 
-### Verificare în Kafka
+### Verify in Kafka
 
 * Topic: `mysql.library.AUTHORS`
-* Trebuie să apară un eveniment nou în tab-ul **Messages**
+* A new CDC event should appear in the **Messages** tab
 
-### Verificare în PostgreSQL
+### Verify in PostgreSQL
 
 ```bash
 docker exec -it cdc-postgres-1 psql -U debezium_user -d debezium_postgres \
