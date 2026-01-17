@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EasyStock Library Operations</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <h1>EasyStock Library</h1>
+      <p>Library operations: members and loans.</p>
+    </div>
+    <nav class="nav">
+      <a class="nav-link" href="/">Catalog Management</a>
+      <a class="nav-link active" href="/operations">Library Operations</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Register Member</h2>
+      <form id="member-form" class="grid-form">
+        <input type="hidden" name="id" />
+        <label>Name
+          <input name="name" required />
+        </label>
+        <label>Email
+          <input name="email" type="email" required />
+        </label>
+        <div class="form-actions">
+          <button type="submit">Save</button>
+          <button id="reset-member" type="button" class="secondary">Clear</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Members</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Active Loans</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="members-body"></tbody>
+      </table>
+      <div class="pagination" id="members-pagination">
+        <button type="button" class="secondary" data-action="prev">Previous</button>
+        <span class="page-indicator">Page 1</span>
+        <button type="button" data-action="next">Next</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Borrow Books</h2>
+      <form id="borrow-form" class="inline-form action-row">
+        <label>Member
+          <div class="select-wrap">
+            <select name="member_id" id="borrow-member"></select>
+          </div>
+        </label>
+        <label>Genre
+          <div class="select-wrap">
+            <select name="genre" id="borrow-genre"></select>
+          </div>
+        </label>
+        <label>Book
+          <div class="select-wrap">
+            <select name="book_id" id="borrow-book"></select>
+          </div>
+        </label>
+        <button type="submit">Borrow Book</button>
+      </form>
+      <h3>Active Loans</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Book</th>
+            <th>Member</th>
+            <th>Loan Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="loans-body"></tbody>
+      </table>
+      <div class="pagination" id="loans-pagination">
+        <button type="button" class="secondary" data-action="prev">Previous</button>
+        <span class="page-indicator">Page 1</span>
+        <button type="button" data-action="next">Next</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Library Insights</h2>
+      <div class="query-grid insights-grid">
+        <div class="query-card">
+          <h3>Borrow History by Member</h3>
+          <form id="history-form" class="inline-form">
+            <div class="select-wrap">
+              <select name="member_id" id="history-member"></select>
+            </div>
+            <button type="submit">Run</button>
+          </form>
+          <table>
+            <thead>
+              <tr>
+                <th>Loan ID</th>
+                <th>Book</th>
+                <th>Loan Date</th>
+                <th>Return Date</th>
+              </tr>
+            </thead>
+            <tbody id="history-body"></tbody>
+          </table>
+          <div class="pagination" id="history-pagination">
+            <button type="button" class="secondary" data-action="prev">Previous</button>
+            <span class="page-indicator">Page 1</span>
+            <button type="button" data-action="next">Next</button>
+          </div>
+        </div>
+        <div class="query-card">
+          <h3>Overdue Loans</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Book</th>
+                <th>Member</th>
+                <th>Loan Date</th>
+                <th>Days Overdue</th>
+              </tr>
+            </thead>
+            <tbody id="overdue-body"></tbody>
+          </table>
+          <div class="pagination" id="overdue-pagination">
+            <button type="button" class="secondary" data-action="prev">Previous</button>
+            <span class="page-indicator">Page 1</span>
+            <button type="button" data-action="next">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+  <script type="module" src="/static/js/operations.js?v=1"></script>
+</body>
+</html>

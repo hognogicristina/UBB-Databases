@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>EasyStock Library</title>
+    <link rel="stylesheet" href="/static/css/styles.css"/>
+</head>
+<body>
+<header class="site-header">
+    <div>
+        <h1>EasyStock Library</h1>
+        <p>Catalog management: books and authors.</p>
+    </div>
+    <nav class="nav">
+        <a class="nav-link active" href="/">Catalog Management</a>
+        <a class="nav-link" href="/operations">Library Operations</a>
+    </nav>
+</header>
+
+<main>
+    <section class="panel">
+        <h2>Handle A Book</h2>
+        <form id="book-form" class="grid-form grid-form-2col">
+            <input type="hidden" name="id"/>
+            <label>Title
+                <input name="title" required/>
+            </label>
+            <label>ISBN
+                <input name="isbn" required/>
+            </label>
+            <label>Genre
+                <div class="select-wrap">
+                    <select id="genre-select" name="genre_id"></select>
+                </div>
+            </label>
+            <label>Authors
+                <div class="select-wrap">
+                    <select id="author-select" name="author_id"></select>
+                </div>
+            </label>
+            <div class="form-actions">
+                <button type="submit">Save Book</button>
+                <button id="reset-book" type="button" class="secondary">Clear</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="panel">
+        <h2>Books</h2>
+        <div class="inline-form" aria-label="Book filters">
+            <label>Filter by genre
+                <div class="select-wrap">
+                    <select id="books-genre-filter">
+                        <option value="">All genres</option>
+                    </select>
+                </div>
+            </label>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="books-body"></tbody>
+        </table>
+        <div class="pagination" id="books-pagination">
+            <button type="button" class="secondary" data-action="prev">Previous</button>
+            <span class="page-indicator">Page 1</span>
+            <button type="button" data-action="next">Next</button>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Handle Genre</h2>
+        <form id="genre-form" class="grid-form">
+            <input type="hidden" name="id"/>
+            <label>Name
+                <input name="name" required/>
+            </label>
+            <div class="form-actions">
+                <button type="submit">Save Genre</button>
+                <button id="reset-genre" type="button" class="secondary">Clear</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="panel">
+        <h2>Genres</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Books</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="genres-body"></tbody>
+        </table>
+        <div class="pagination" id="genres-pagination">
+            <button type="button" class="secondary" data-action="prev">Previous</button>
+            <span class="page-indicator">Page 1</span>
+            <button type="button" data-action="next">Next</button>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Handle Author</h2>
+        <form id="author-form" class="grid-form">
+            <input type="hidden" name="id"/>
+            <label>Name
+                <input name="name" required/>
+            </label>
+            <label>Birth Year
+                <input name="birth_year" required/>
+            </label>
+            <div class="form-actions">
+                <button type="submit">Save Author</button>
+                <button id="reset-author" type="button" class="secondary">Clear</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="panel">
+        <h2>Authors</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Birth Year</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="authors-body"></tbody>
+        </table>
+        <div class="pagination" id="authors-pagination">
+            <button type="button" class="secondary" data-action="prev">Previous</button>
+            <span class="page-indicator">Page 1</span>
+            <button type="button" data-action="next">Next</button>
+        </div>
+    </section>
+
+</main>
+
+<div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+<script type="module" src="/static/js/catalog.js"></script>
+</body>
+</html>
