@@ -1,0 +1,554 @@
+.medstream-treatment-analysis-surface {
+  width: 100%;
+}
+
+.medstream-treatment-overview-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  background: var(--surface-2);
+  padding: 14px 16px;
+}
+
+.medstream-treatment-analysis-heading {
+  margin: 0;
+}
+
+.medstream-treatment-analysis-heading h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.medstream-treatment-analysis-heading p {
+  margin: 3px 0 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.medstream-treatment-subheading {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.medstream-treatment-analysis-surface [class*="awsui_h2-variant"] {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.medstream-treatment-analysis-surface [class*="awsui_key-label-variant"] {
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.medstream-treatment-chart-panel {
+  height: 370px;
+  min-height: 370px;
+  padding: 0;
+}
+
+.medstream-treatment-summary-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.medstream-treatment-summary-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.medstream-timeline-item,
+.medstream-timeline-empty {
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.medstream-timeline-item {
+  background: transparent;
+}
+
+.medstream-timeline-empty {
+  background: var(--surface-2);
+}
+
+.medstream-timeline-empty {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.medstream-timeline-item-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.medstream-sfn-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.medstream-latest-alert-summary {
+  margin: 0;
+}
+
+.medstream-latest-alert-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  background: var(--surface-2);
+  padding: 14px 16px;
+}
+
+.medstream-latest-alert-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.medstream-latest-alert-header h3,
+.medstream-simple-section-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.medstream-latest-alert-header p {
+  margin: 3px 0 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.medstream-key-value-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.medstream-key-value-grid-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.medstream-key-value-item {
+  min-width: 0;
+}
+
+.medstream-key-value-item span {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.medstream-key-value-item strong {
+  display: block;
+  margin-top: 3px;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.medstream-key-value-item small {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.medstream-latest-alert-copy {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.medstream-alert-history {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+}
+
+.medstream-alert-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.medstream-alert-history-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.medstream-alert-history-row {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.8fr) minmax(0, 1.8fr);
+  gap: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  border-left: 3px solid transparent;
+  padding: 12px 0 12px 10px;
+  background: transparent;
+}
+
+.medstream-alert-history-row-critical {
+  border-left-color: #d13212;
+}
+
+.medstream-alert-history-row-high {
+  border-left-color: #ff9900;
+}
+
+.medstream-alert-history-row-normal {
+  border-left-color: #037f0c;
+}
+
+.medstream-alert-history-main {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.medstream-alert-history-main strong {
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.medstream-alert-history-main > span:not([class*="awsui"]) {
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.medstream-alert-history-values {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.medstream-alert-history-values span,
+.medstream-attribute-meta span {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.medstream-alert-history-values strong,
+.medstream-attribute-meta strong {
+  display: block;
+  margin-top: 3px;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.medstream-sfn-wrapper-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.medstream-sfn-wrapper-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.medstream-sfn-panel {
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.medstream-sfn-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0;
+}
+
+.medstream-sfn-heading-main {
+  min-width: 0;
+}
+
+.medstream-sfn-service {
+  display: block;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.medstream-sfn-heading h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.medstream-sfn-heading p {
+  margin: 3px 0 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.medstream-sfn-content {
+  display: block;
+  padding: 12px 0 0;
+}
+
+.medstream-sfn-status-rail {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 5px;
+}
+
+.medstream-sfn-status-node {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--border-strong);
+  border-radius: 50%;
+  background: var(--surface-1);
+}
+
+.medstream-sfn-status-effective {
+  border-color: #22c55e;
+  background: #22c55e;
+}
+
+.medstream-sfn-status-improving {
+  border-color: #f59e0b;
+  background: #f59e0b;
+}
+
+.medstream-sfn-status-ineffective {
+  border-color: #ef4444;
+  background: #ef4444;
+}
+
+.medstream-sfn-status-line {
+  width: 2px;
+  height: 100%;
+  min-height: 190px;
+  background: var(--border-subtle);
+}
+
+.medstream-sfn-main {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.medstream-sfn-section {
+  min-width: 0;
+}
+
+.medstream-sfn-section h4 {
+  margin: 0 0 8px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.medstream-compact-detail-field,
+.medstream-compact-summary-field {
+  min-width: 0;
+}
+
+.medstream-compact-summary-heading {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.medstream-vital-status {
+  flex: 0 0 auto;
+  border: 1px solid var(--border-primary);
+  border-radius: 999px;
+  padding: 1px 7px;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.medstream-vital-status-normal {
+  border-color: color-mix(in srgb, #037f0c 38%, var(--border-primary));
+  color: #037f0c;
+}
+
+.medstream-vital-status-high {
+  border-color: color-mix(in srgb, #ff9900 46%, var(--border-primary));
+  color: #9d5d00;
+}
+
+.medstream-vital-status-critical {
+  border-color: color-mix(in srgb, #d13212 46%, var(--border-primary));
+  color: #d13212;
+}
+
+[data-theme="dark"] .medstream-vital-status-normal {
+  color: #7ccf83;
+}
+
+[data-theme="dark"] .medstream-vital-status-high {
+  color: #f0b429;
+}
+
+[data-theme="dark"] .medstream-vital-status-critical {
+  color: #ff8a75;
+}
+
+.medstream-compact-detail-value,
+.medstream-compact-summary-value {
+  margin-top: 3px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.medstream-compact-summary-field [class*="awsui_box_"]:last-child {
+  margin-top: 2px;
+  font-size: 11px;
+}
+
+.medstream-sfn-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0;
+}
+
+.medstream-sfn-detail-field {
+  min-width: 0;
+}
+
+.medstream-sfn-detail-field dt,
+.medstream-sfn-transition-label,
+.medstream-dynamodb-meta dt {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.medstream-sfn-detail-field dd {
+  margin: 5px 0 0;
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.medstream-sfn-transition-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.medstream-sfn-transition-label {
+  margin: 0 0 6px;
+}
+
+.medstream-sfn-transition-card {
+  border: 1px solid var(--border-primary);
+  border-radius: 16px;
+  background: var(--surface-2);
+  padding: 14px;
+}
+
+.medstream-sfn-transition-card dl {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 0;
+}
+
+.medstream-sfn-transition-card dt {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.medstream-sfn-transition-card dd {
+  margin: 3px 0 0;
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.medstream-sfn-cause {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.medstream-dynamodb-list {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  border: 1px solid var(--border-primary);
+  border-radius: 16px;
+  background: var(--surface-2);
+}
+
+.medstream-dynamodb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.medstream-attribute-list-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 275px;
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  background: var(--surface-2);
+  padding: 14px 16px;
+}
+
+.medstream-simple-section-header {
+  margin-bottom: 8px;
+}

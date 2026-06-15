@@ -1,0 +1,468 @@
+.medstream-transfer-title {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  vertical-align: middle;
+}
+
+.medstream-label-with-help {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  max-width: 100%;
+  min-width: 0;
+  vertical-align: middle;
+}
+
+.medstream-transfer-help-anchor {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  overflow: visible;
+}
+
+.medstream-transfer-help-trigger {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #38bdf8;
+  border-radius: 50%;
+  background: #001b33;
+  color: #38bdf8;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+
+.medstream-transfer-help-trigger::before,
+.medstream-transfer-help-trigger::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+}
+
+.medstream-transfer-help-trigger::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.medstream-transfer-help-trigger-open::after {
+  opacity: 0;
+}
+
+.medstream-transfer-help-trigger:hover {
+  background: #061f3a;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.14);
+}
+
+.medstream-transfer-help-trigger:focus-visible {
+  outline: 2px solid rgba(56, 189, 248, 0.45);
+  outline-offset: 2px;
+}
+
+.medstream-transfer-help-card {
+  position: absolute;
+  z-index: 1000;
+  top: calc(100% + 12px);
+  left: 50%;
+  display: grid;
+  width: min(312px, calc(100vw - 48px));
+  transform: translateX(-50%);
+  border: 2px solid #38bdf8;
+  border-radius: 8px;
+  background: #001b33;
+  box-shadow: 0 10px 28px rgba(0, 8, 20, 0.36);
+  color: #d5dde8;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  padding: 15px 17px 16px;
+  white-space: normal;
+}
+
+.medstream-transfer-help-card::before {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  transform: translateX(-50%) rotate(45deg);
+  border-top: 2px solid #38bdf8;
+  border-left: 2px solid #38bdf8;
+  background: #001b33;
+  content: "";
+}
+
+.medstream-transfer-help-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 18px;
+  height: 18px;
+  border: 0;
+  background: transparent;
+  color: #d5dde8;
+  cursor: pointer;
+  padding: 0;
+}
+
+.medstream-transfer-help-close::before,
+.medstream-transfer-help-close::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 3px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+}
+
+.medstream-transfer-help-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.medstream-transfer-help-close:hover,
+.medstream-transfer-help-close:focus-visible {
+  color: #ffffff;
+}
+
+.medstream-transfer-help-title {
+  display: block;
+  margin: 0 28px 13px 0;
+  color: #d5dde8;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.medstream-transfer-help-body {
+  display: block;
+  color: #d5dde8;
+}
+
+.medstream-transfer-help-body + .medstream-transfer-help-body {
+  margin-top: 8px;
+}
+
+.medstream-transfer-help-footer {
+  display: block;
+  margin-top: 14px;
+  border-top: 1px solid rgba(213, 221, 232, 0.3);
+  color: #d5dde8;
+  font-size: 13px;
+  padding-top: 12px;
+}
+
+.medstream-treatment-title,
+.medstream-treatment-step-title {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  vertical-align: middle;
+}
+
+.medstream-aws-info-anchor {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  overflow: visible;
+}
+
+.medstream-aws-info-trigger {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #38bdf8;
+  border-radius: 50%;
+  background: #001b33;
+  color: #38bdf8;
+  cursor: pointer;
+  padding: 0;
+}
+
+.medstream-aws-info-trigger::before,
+.medstream-aws-info-trigger::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+}
+
+.medstream-aws-info-trigger::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.medstream-aws-info-trigger-open::after {
+  opacity: 0;
+}
+
+.medstream-aws-info-trigger:hover {
+  background: #061f3a;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.14);
+}
+
+.medstream-aws-info-trigger:focus-visible {
+  outline: 2px solid rgba(56, 189, 248, 0.45);
+  outline-offset: 2px;
+}
+
+.medstream-aws-info-card {
+  position: absolute;
+  z-index: 1000;
+  top: calc(100% + 12px);
+  left: 50%;
+  display: grid;
+  width: min(330px, calc(100vw - 48px));
+  transform: translateX(-50%);
+  border: 2px solid #38bdf8;
+  border-radius: 8px;
+  background: #001b33;
+  box-shadow: 0 10px 28px rgba(0, 8, 20, 0.36);
+  color: #d5dde8;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  padding: 15px 17px 14px;
+  white-space: normal;
+}
+
+.medstream-aws-info-card::before {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  transform: translateX(-50%) rotate(45deg);
+  border-top: 2px solid #38bdf8;
+  border-left: 2px solid #38bdf8;
+  background: #001b33;
+  content: "";
+}
+
+.medstream-aws-info-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 18px;
+  height: 18px;
+  border: 0;
+  background: transparent;
+  color: #d5dde8;
+  cursor: pointer;
+  padding: 0;
+}
+
+.medstream-aws-info-close::before,
+.medstream-aws-info-close::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 3px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+}
+
+.medstream-aws-info-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.medstream-aws-info-close:hover,
+.medstream-aws-info-close:focus-visible {
+  color: #ffffff;
+}
+
+.medstream-aws-info-title {
+  display: block;
+  margin: 0 28px 13px 0;
+  color: #d5dde8;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.medstream-aws-info-body {
+  display: block;
+  color: #d5dde8;
+}
+
+.medstream-aws-info-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 14px;
+  border-top: 1px solid rgba(213, 221, 232, 0.3);
+  color: #d5dde8;
+  font-size: 13px;
+  padding-top: 12px;
+}
+
+.medstream-aws-info-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.medstream-aws-info-link {
+  border: 0;
+  background: transparent;
+  color: #38bdf8;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  padding: 0;
+}
+
+.medstream-aws-info-link:hover,
+.medstream-aws-info-link:focus-visible {
+  color: #7dd3fc;
+}
+
+.medstream-aws-info-primary {
+  min-width: 80px;
+  height: 34px;
+  border: 2px solid #7dd3fc;
+  border-radius: 999px;
+  background: transparent;
+  color: #7dd3fc;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  line-height: 1;
+  padding: 0 20px;
+}
+
+.medstream-aws-info-primary:hover,
+.medstream-aws-info-primary:focus-visible {
+  background: rgba(56, 189, 248, 0.12);
+  color: #bae6fd;
+}
+
+[data-theme="light"] .medstream-transfer-help-trigger,
+[data-theme="light"] .medstream-aws-info-trigger {
+  border-color: #0972d3;
+  background: #ffffff;
+  color: #0972d3;
+}
+
+[data-theme="light"] .medstream-transfer-help-trigger:hover,
+[data-theme="light"] .medstream-aws-info-trigger:hover {
+  background: #f1faff;
+  box-shadow: 0 0 0 3px rgba(9, 114, 211, 0.14);
+}
+
+[data-theme="light"] .medstream-transfer-help-trigger:focus-visible,
+[data-theme="light"] .medstream-aws-info-trigger:focus-visible {
+  outline-color: rgba(9, 114, 211, 0.45);
+}
+
+[data-theme="light"] .medstream-transfer-help-card,
+[data-theme="light"] .medstream-aws-info-card {
+  border-color: #0972d3;
+  background: #f1faff;
+  box-shadow: 0 10px 28px rgba(0, 7, 22, 0.18);
+  color: #232f3e;
+}
+
+[data-theme="light"] .medstream-transfer-help-card::before,
+[data-theme="light"] .medstream-aws-info-card::before {
+  border-color: #0972d3;
+  background: #f1faff;
+}
+
+[data-theme="light"] .medstream-transfer-help-close,
+[data-theme="light"] .medstream-aws-info-close {
+  color: #414d5c;
+}
+
+[data-theme="light"] .medstream-transfer-help-close:hover,
+[data-theme="light"] .medstream-transfer-help-close:focus-visible,
+[data-theme="light"] .medstream-aws-info-close:hover,
+[data-theme="light"] .medstream-aws-info-close:focus-visible {
+  color: #0972d3;
+}
+
+[data-theme="light"] .medstream-transfer-help-title,
+[data-theme="light"] .medstream-aws-info-title {
+  color: #414d5c;
+}
+
+[data-theme="light"] .medstream-transfer-help-body,
+[data-theme="light"] .medstream-aws-info-body {
+  color: #232f3e;
+}
+
+[data-theme="light"] .medstream-transfer-help-footer,
+[data-theme="light"] .medstream-aws-info-footer {
+  border-top-color: #d5dbdb;
+  color: #414d5c;
+}
+
+[data-theme="light"] .medstream-aws-info-link {
+  color: #0972d3;
+}
+
+[data-theme="light"] .medstream-aws-info-link:hover,
+[data-theme="light"] .medstream-aws-info-link:focus-visible {
+  color: #075aa7;
+}
+
+[data-theme="light"] .medstream-aws-info-primary {
+  border-color: #0972d3;
+  color: #0972d3;
+}
+
+[data-theme="light"] .medstream-aws-info-primary:hover,
+[data-theme="light"] .medstream-aws-info-primary:focus-visible {
+  background: rgba(9, 114, 211, 0.08);
+  color: #075aa7;
+}
+
+@media (max-width: 640px) {
+  .medstream-transfer-help-card {
+    left: auto;
+    right: -16px;
+    transform: none;
+  }
+
+  .medstream-transfer-help-card::before {
+    left: auto;
+    right: 20px;
+    transform: rotate(45deg);
+  }
+
+  .medstream-aws-info-card {
+    left: auto;
+    right: -16px;
+    transform: none;
+  }
+
+  .medstream-aws-info-card::before {
+    left: auto;
+    right: 20px;
+    transform: rotate(45deg);
+  }
+}

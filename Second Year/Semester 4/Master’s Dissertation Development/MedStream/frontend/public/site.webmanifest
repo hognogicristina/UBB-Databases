@@ -1,0 +1,20 @@
+{
+  "name": "MedStream",
+  "short_name": "MedStream",
+  "description": "Real-time clinical monitoring and analytics dashboard.",
+  "theme_color": "#0d1b26",
+  "background_color": "#0d1b26",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/medstream-icon-small.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/medstream-icon.svg",
+      "sizes": "128x128",
+      "type": "image/svg+xml"
+    }
+  ]
+}

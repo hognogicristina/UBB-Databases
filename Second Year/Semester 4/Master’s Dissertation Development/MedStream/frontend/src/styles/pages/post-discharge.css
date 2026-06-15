@@ -1,0 +1,394 @@
+.post-discharge-summary-value-success {
+  color: #037f0c;
+}
+
+.post-discharge-summary-value-warning {
+  color: #b35c00;
+}
+
+.post-discharge-summary-value-danger {
+  color: #d13212;
+}
+
+.post-discharge-summary-value-info {
+  color: #0972d3;
+}
+
+.post-discharge-summary-card > [class*="awsui_content-wrapper"] > [class*="awsui_content"] > [class*="awsui_content-inner"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.post-discharge-fit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px 18px;
+  align-items: start;
+  min-width: 0;
+}
+
+.post-discharge-fit-grid-two {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+.post-discharge-control-row {
+  display: flex;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.post-discharge-control-row > * {
+  max-width: 100%;
+}
+
+.post-discharge-value-block,
+.post-discharge-page-status-value {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.post-discharge-plain-section {
+  min-width: 0;
+  border-block-start: 1px solid var(--border-subtle);
+  padding-top: 16px;
+}
+
+.post-discharge-plain-section > [class*="awsui_box"] {
+  margin-bottom: 14px;
+}
+
+.post-discharge-unframed-section {
+  min-width: 0;
+}
+
+.post-discharge-unframed-section-header {
+  margin-bottom: 14px;
+}
+
+.post-discharge-summary-value {
+  overflow-wrap: anywhere;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.28;
+}
+
+.post-discharge-page-status-value {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+[data-theme="light"] .post-discharge-summary-value-success {
+  color: #037f0c;
+}
+
+[data-theme="light"] .post-discharge-summary-value-warning {
+  color: #b35c00;
+}
+
+[data-theme="light"] .post-discharge-summary-value-danger {
+  color: #d13212;
+}
+
+.post-discharge-progress-bar {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.post-discharge-progress-bar > div,
+.post-discharge-progress-bar [class*="awsui_root"],
+.post-discharge-progress-bar [class*="awsui_progress-container"] {
+  width: 100%;
+  max-width: 100%;
+}
+
+.post-discharge-response-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  min-width: 0;
+}
+
+.post-discharge-response-outcome-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  min-width: 0;
+}
+
+.post-discharge-response-meter {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  gap: 10px;
+}
+
+.post-discharge-response-meter-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+}
+
+.post-discharge-response-meter-label {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.post-discharge-response-meter-description,
+.post-discharge-response-meter-info {
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.post-discharge-response-meter-description {
+  margin-top: 2px;
+}
+
+.post-discharge-response-meter-percent {
+  flex: 0 0 auto;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.post-discharge-response-meter-track {
+  width: 100%;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--border-strong) 46%, transparent);
+}
+
+.post-discharge-response-meter-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #0972d3;
+}
+
+.post-discharge-section-divider {
+  height: 1px;
+  width: 100%;
+  background: var(--border-subtle);
+}
+
+.post-discharge-metric-steps-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+  gap: 20px;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.post-discharge-metric-steps-section {
+  min-width: 0;
+}
+
+.post-discharge-metric-steps-header {
+  margin-bottom: 14px;
+}
+
+.post-discharge-metric-steps-divider {
+  width: 1px;
+  min-height: 100%;
+  background: var(--border-subtle);
+}
+
+.post-discharge-step-value {
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.post-discharge-metric-panel {
+  min-width: 0;
+  height: 100%;
+}
+
+.post-discharge-metric-panel > [class*="awsui_root"],
+.post-discharge-metric-panel > [class*="awsui_root"] > [class*="awsui_content-wrapper"] {
+  height: 100%;
+}
+
+.post-discharge-metric-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 0;
+}
+
+.post-discharge-metric-card {
+  --post-discharge-metric-accent: var(--border-strong);
+  --post-discharge-metric-bg: var(--surface-1);
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  background: var(--post-discharge-metric-bg);
+  padding: 11px 12px 10px 14px;
+  transition: background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.post-discharge-metric-card:hover {
+  border-color: var(--border-strong);
+  background: color-mix(in srgb, var(--post-discharge-metric-bg) 88%, var(--surface-muted));
+  box-shadow: 0 1px 4px rgba(35, 47, 62, 0.08);
+}
+
+.post-discharge-metric-card-accent {
+  position: absolute;
+  inset-block: 10px;
+  inset-inline-start: 0;
+  width: 3px;
+  border-radius: 0 999px 999px 0;
+  background: var(--post-discharge-metric-accent);
+}
+
+.post-discharge-metric-card-label {
+  overflow: hidden;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.post-discharge-metric-card-value {
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+  color: var(--text-primary);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.post-discharge-metric-card-success {
+  --post-discharge-metric-accent: #037f0c;
+  --post-discharge-metric-bg: color-mix(in srgb, #037f0c 5%, var(--surface-1));
+}
+
+.post-discharge-metric-card-warning {
+  --post-discharge-metric-accent: #ff9900;
+  --post-discharge-metric-bg: color-mix(in srgb, #ff9900 7%, var(--surface-1));
+}
+
+.post-discharge-metric-card-danger {
+  --post-discharge-metric-accent: #d13212;
+  --post-discharge-metric-bg: color-mix(in srgb, #d13212 5%, var(--surface-1));
+}
+
+.post-discharge-text-stack {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+}
+
+.post-discharge-text-stack > * {
+  min-width: 0;
+  padding-block: 14px;
+}
+
+.post-discharge-text-stack > *:first-child {
+  padding-top: 0;
+}
+
+.post-discharge-text-stack > * + * {
+  border-block-start: 1px solid var(--border-subtle);
+}
+
+.post-discharge-text-stack p {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.post-discharge-inline-panel {
+  min-width: 0;
+  background: transparent;
+  padding: 0;
+}
+
+@media (max-width: 640px) {
+  .post-discharge-fit-grid,
+  .post-discharge-fit-grid-two,
+  .post-discharge-response-summary-grid,
+  .post-discharge-response-outcome-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .post-discharge-response-meter-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .post-discharge-metric-steps-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .post-discharge-metric-steps-divider {
+    width: 100%;
+    height: 1px;
+    min-height: 0;
+  }
+
+  .post-discharge-metric-panel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+[data-theme="dark"] .post-discharge-response-meter-track {
+  background: color-mix(in srgb, var(--border-strong) 58%, transparent);
+}
+
+[data-theme="dark"] .post-discharge-response-meter-fill {
+  background: #5ba9f9;
+}
+
+[data-theme="dark"] .post-discharge-metric-card {
+  --post-discharge-metric-bg: var(--surface-2);
+  background: var(--post-discharge-metric-bg);
+}
+
+[data-theme="dark"] .post-discharge-metric-card:hover {
+  background: color-mix(in srgb, var(--post-discharge-metric-bg) 82%, #2b3644);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .post-discharge-metric-card-success {
+  --post-discharge-metric-accent: #2ea043;
+  --post-discharge-metric-bg: color-mix(in srgb, #2ea043 12%, var(--surface-2));
+}
+
+[data-theme="dark"] .post-discharge-metric-card-warning {
+  --post-discharge-metric-accent: #ffb347;
+  --post-discharge-metric-bg: color-mix(in srgb, #ff9900 13%, var(--surface-2));
+}
+
+[data-theme="dark"] .post-discharge-metric-card-danger {
+  --post-discharge-metric-accent: #ff6b5f;
+  --post-discharge-metric-bg: color-mix(in srgb, #d13212 13%, var(--surface-2));
+}
+
+[data-theme="dark"] .post-discharge-summary-value-success {
+  color: #9dd6b4;
+}
+
+[data-theme="dark"] .post-discharge-summary-value-warning {
+  color: #f4d38f;
+}
+
+[data-theme="dark"] .post-discharge-summary-value-danger {
+  color: #f5a4ad;
+}

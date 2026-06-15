@@ -1,0 +1,139 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: medstream-backend
+    restart: on-failure
+    environment:
+      APP_NAME: MedStream API
+      APP_HOST: 0.0.0.0
+      APP_PORT: 8000
+      DATABASE_URL: postgresql://${POSTGRES_USER:-medstream_user}:${POSTGRES_PASSWORD:-medstream_pass}@postgres:5432/${POSTGRES_DB:-medstream}
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      KAFKA_VITALS_TOPIC: vitals-events
+      KAFKA_ALERTS_TOPIC: alerts-events
+      KAFKA_BATCH_TOPIC: batch-events
+      FRONTEND_BASE_URL: http://localhost:5173
+      SMTP_HOST: mailcatcher
+      SMTP_PORT: 1025
+      HEART_RATE_ALERT_THRESHOLD: 120
+      OXYGEN_ALERT_THRESHOLD: 92
+      TEMPERATURE_ALERT_THRESHOLD: 39
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+      mailcatcher:
+        condition: service_started
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: medstream-frontend
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000
+      VITE_WS_URL: ws://localhost:8000/ws
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - frontend_node_modules:/app/node_modules
+    depends_on:
+      - backend
+
+  postgres:
+    image: postgres:16
+    container_name: medstream-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-medstream}
+      POSTGRES_USER: ${POSTGRES_USER:-medstream_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-medstream_pass}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: medstream-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@medstream.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./pgadmin/servers.json:/pgadmin4/servers.json
+
+  mailcatcher:
+    image: sj26/mailcatcher:latest
+    container_name: medstream-mailcatcher
+    command: mailcatcher --foreground --ip=0.0.0.0 --smtp-ip=0.0.0.0 --http-ip=0.0.0.0
+    expose:
+      - "1025"
+    ports:
+      - "1080:1080"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.6.1
+    container_name: medstream-kafka
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_INTERNAL://0.0.0.0:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka:29092
+
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
+
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    healthcheck:
+      test: [ "CMD-SHELL", "kafka-topics --bootstrap-server localhost:9092 --list >/dev/null 2>&1" ]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 20s
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.6.1
+    container_name: medstream-zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: medstream-kafka-ui
+    ports:
+      - "8080:8080"
+    depends_on:
+      kafka:
+        condition: service_healthy
+    environment:
+      KAFKA_CLUSTERS_0_NAME: medstream-local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+  kafka_data:
+  frontend_node_modules:

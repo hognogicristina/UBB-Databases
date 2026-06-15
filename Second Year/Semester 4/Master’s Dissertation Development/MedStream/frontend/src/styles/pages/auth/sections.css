@@ -1,0 +1,98 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-section {
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  background: var(--surface-1);
+  padding: 16px;
+}
+
+.auth-step-indicator {
+  display: inline-flex;
+  margin-top: 16px;
+  border: 1px solid var(--border-primary);
+  border-radius: 999px;
+  background: var(--surface-2);
+  padding: 8px 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.auth-section-header {
+  margin-bottom: 16px;
+}
+
+.auth-section-label {
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.auth-section-copy {
+  margin: 8px 0 0;
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+}
+
+.register-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.register-sections {
+  display: grid;
+  gap: 18px;
+}
+
+.register-section-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: 100%;
+}
+
+.register-step-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: all 200ms ease;
+}
+
+.register-professional-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.register-field-layer {
+  position: relative;
+  z-index: 0;
+}
+
+.register-field-layer-raised {
+  position: relative;
+  z-index: 20;
+}
+
+.auth-action-full {
+  width: 100%;
+}
+
+.auth-button-row {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+}
+
+.auth-button-fill {
+  width: 100%;
+}

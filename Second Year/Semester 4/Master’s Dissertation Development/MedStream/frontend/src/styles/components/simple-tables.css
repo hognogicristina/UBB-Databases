@@ -1,0 +1,138 @@
+.medstream-data-table-controls {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-primary);
+  border-radius: 24px;
+  background: var(--surface-2);
+  padding: 16px;
+}
+
+.medstream-data-table-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.medstream-data-table-input {
+  width: 100%;
+  border-radius: 16px;
+  padding: 12px 16px;
+  outline: none;
+}
+
+.medstream-data-table-shell {
+  overflow: hidden;
+  border: 1px solid var(--border-primary);
+  border-radius: 24px;
+  background: var(--surface-2);
+}
+
+.medstream-data-table-body > * + * {
+  border-top: 1px solid #3b424b;
+}
+
+[data-theme="light"] .medstream-data-table-body > * + * {
+  border-top-color: var(--border-subtle);
+}
+
+.medstream-data-table-empty-state {
+  padding: 20px 16px;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.medstream-data-table-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.medstream-data-table-bottom-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .medstream-data-table-footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1024px) {
+  .medstream-data-table-controls {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.medstream-simple-list-table th[class*="awsui_header-cell"] {
+  border-block-end: 1px solid color-mix(in srgb, var(--border-strong) 74%, transparent) !important;
+  box-shadow: none;
+}
+
+.medstream-assigned-doctors-table,
+.medstream-assigned-doctors-table *,
+.medstream-assigned-doctors-table *::before,
+.medstream-assigned-doctors-table *::after {
+  border-radius: 0 !important;
+  border-start-start-radius: 0 !important;
+  border-start-end-radius: 0 !important;
+  border-end-start-radius: 0 !important;
+  border-end-end-radius: 0 !important;
+  clip-path: none !important;
+}
+
+.medstream-assigned-doctors-table [class*="awsui_table"] {
+  width: 100% !important;
+  min-width: 100% !important;
+  table-layout: fixed !important;
+}
+
+.medstream-assigned-doctors-table [class*="awsui_body-cell-content"],
+.medstream-assigned-doctors-table [class*="awsui_header-cell-text"] {
+  max-width: 100%;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.medstream-assigned-doctors-table [class*="awsui_sticky-scrollbar"],
+.medstream-assigned-doctors-table [class*="awsui_sticky-scrollbar-content"] {
+  width: 100% !important;
+  inline-size: 100% !important;
+  max-width: 100% !important;
+}
+
+.medstream-simple-list-table td[class*="awsui_body-cell"] {
+  border-block-start-color: transparent !important;
+  border-block-end-color: transparent !important;
+  box-shadow: none;
+}
+
+.medstream-simple-list-table tbody tr + tr > td[class*="awsui_body-cell"] {
+  border-block-start: 1px solid color-mix(in srgb, var(--border-strong) 74%, transparent) !important;
+}
+
+.medstream-simple-list-table th[data-focus-id="header-patients"],
+.medstream-simple-list-table tbody tr > td[class*="awsui_body-cell"]:last-child {
+  padding-inline-end: 24px !important;
+  text-align: right;
+}
+
+.medstream-simple-list-table th[data-focus-id="header-patients"] [class*="awsui_header-cell-content"] {
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.medstream-simple-list-table th[data-focus-id="header-patients"] [class*="awsui_header-cell-text"],
+.medstream-simple-list-table tbody tr > td[class*="awsui_body-cell"]:last-child [class*="awsui_body-cell-content"] {
+  text-align: right !important;
+}

@@ -1,0 +1,82 @@
+.medstream-department-badge {
+  display: inline-flex;
+  cursor: help;
+}
+
+.medstream-hover-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: visible;
+  vertical-align: middle;
+  outline: none;
+}
+
+.medstream-hover-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+}
+
+.medstream-hover-dropdown-content {
+  position: absolute;
+  z-index: 80;
+  top: calc(100% + 10px);
+  left: 50%;
+  width: max-content;
+  max-width: min(340px, calc(100vw - 32px));
+  transform: translate(-50%, -4px);
+  border: 2px solid color-mix(in srgb, var(--chart-axis) 72%, transparent);
+  border-radius: 12px;
+  background: var(--surface-2);
+  box-shadow: 0 16px 36px rgba(2, 6, 23, 0.28);
+  color: var(--chart-tooltip-text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  opacity: 0;
+  padding: 12px 16px;
+  pointer-events: none;
+  text-align: left;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  white-space: normal;
+}
+
+.medstream-hover-dropdown-content::before {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translateX(-50%) rotate(45deg);
+  border-top: 2px solid color-mix(in srgb, var(--chart-axis) 72%, transparent);
+  border-left: 2px solid color-mix(in srgb, var(--chart-axis) 72%, transparent);
+  background: var(--surface-2);
+  content: "";
+}
+
+.medstream-hover-dropdown[data-position="top"] .medstream-hover-dropdown-content {
+  top: auto;
+  bottom: calc(100% + 10px);
+  transform: translate(-50%, 4px);
+}
+
+.medstream-hover-dropdown[data-position="top"] .medstream-hover-dropdown-content::before {
+  top: auto;
+  bottom: -7px;
+  border-top: 0;
+  border-left: 0;
+  border-right: 2px solid color-mix(in srgb, var(--chart-axis) 72%, transparent);
+  border-bottom: 2px solid color-mix(in srgb, var(--chart-axis) 72%, transparent);
+}
+
+.medstream-hover-dropdown:hover .medstream-hover-dropdown-content,
+.medstream-hover-dropdown:focus-visible .medstream-hover-dropdown-content,
+.medstream-hover-dropdown:focus-within .medstream-hover-dropdown-content {
+  opacity: 1;
+}
+
+.medstream-hover-dropdown:hover .medstream-hover-dropdown-content,
+.medstream-hover-dropdown:focus-visible .medstream-hover-dropdown-content,
+.medstream-hover-dropdown:focus-within .medstream-hover-dropdown-content {
+  transform: translate(-50%, 0);
+}

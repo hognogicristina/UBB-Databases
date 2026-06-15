@@ -1,0 +1,162 @@
+.form-action-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.form-action-message {
+  margin: 0;
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.auth-link:hover {
+  color: var(--link-hover);
+}
+
+.auth-metrics {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.auth-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-metric {
+  border: 1px solid var(--border-primary);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  background: var(--surface-1);
+  padding: 14px 16px;
+}
+
+.auth-metric-label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.auth-metric-value {
+  margin: 8px 0 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.auth-metric-copy {
+  margin: 6px 0 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+@media (min-width: 640px) {
+  .register-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .register-professional-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .register-field-wide {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 900px) {
+  .login-layout {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .login-aside {
+    border-bottom: 0;
+    border-radius: 8px 0 0 8px;
+    padding: 36px;
+  }
+
+  .auth-divider {
+    display: block;
+    width: 1px;
+    height: 100%;
+    align-self: stretch;
+    background: var(--border-subtle);
+    flex: 0 0 1px;
+  }
+
+  .login-aside,
+  .login-panel {
+    flex: 1 1 0;
+  }
+
+  .login-panel {
+    border-radius: 0 8px 8px 0;
+    padding: 36px 36px 40px;
+  }
+
+  .auth-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .register-page .login-card {
+    max-width: 1080px;
+  }
+
+  .register-page .login-layout {
+    flex-direction: row;
+  }
+
+  .register-page .login-aside {
+    padding: 36px;
+    flex: 0.96 1 0;
+  }
+
+  .register-page .login-panel {
+    padding: 40px 40px 44px;
+    flex: 1.04 1 0;
+  }
+
+  .register-page .login-header {
+    margin-bottom: 20px;
+  }
+
+  .register-page .login-form {
+    gap: 22px;
+  }
+
+  .register-page .register-sections {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .register-page .auth-section {
+    padding: 20px;
+  }
+
+  .register-page .auth-section-header {
+    margin-bottom: 18px;
+  }
+
+  .register-page .auth-metrics {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .register-page .auth-metric {
+    padding: 14px 16px;
+  }
+
+  .register-page .auth-actions {
+    gap: 16px;
+  }
+}

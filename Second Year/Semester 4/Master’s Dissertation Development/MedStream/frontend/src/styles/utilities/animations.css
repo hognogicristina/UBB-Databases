@@ -1,0 +1,62 @@
+.alert-new {
+  animation: alert-new-pulse 1.2s ease-out 1;
+}
+
+@keyframes notification-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes medstream-batch-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes alert-new-pulse {
+  0% {
+    border-color: #ff9900;
+  }
+
+  100% {
+    border-color: inherit;
+  }
+}
+
+.loading-spinner-wrap {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--text-secondary);
+}
+
+.loading-spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  border: 3px solid var(--border-primary);
+  border-top-color: #ff9900;
+  animation: loading-spin 0.8s linear infinite;
+}
+
+.loading-spinner-text {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+@keyframes loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

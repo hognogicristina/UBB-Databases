@@ -1,0 +1,152 @@
+.medstream-content-inner [class*="header-wrapper"],
+.medstream-content-inner [class*="background"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.medstream-content-inner .awsui_background_5gtk3_16ebe_159 {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.medstream-page-header {
+  background: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.medstream-breadcrumbs {
+  margin-bottom: 10px;
+}
+
+.medstream-breadcrumbs a {
+  color: var(--link) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+}
+
+.medstream-breadcrumbs a:hover {
+  color: var(--link-hover) !important;
+}
+
+.medstream-breadcrumbs li:last-child a,
+.medstream-breadcrumbs li:last-child span,
+.medstream-breadcrumbs [aria-current="page"],
+.medstream-breadcrumbs [class*="last"] {
+  color: var(--text-secondary) !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+.medstream-page-title {
+  margin: 0;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: var(--text-primary);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.medstream-page-header p {
+  margin: 4px 0 0;
+  background: none;
+  background-color: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.medstream-page-heading-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.medstream-page-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.medstream-page-filter-row > [class*="awsui_root"],
+.medstream-page-filter-row > .medstream-hover-dropdown,
+.medstream-page-filter-row > .medstream-department-badge {
+  flex: 0 0 auto;
+  width: auto !important;
+  inline-size: auto !important;
+  max-width: 100%;
+}
+
+.medstream-page-filter-row [class*="awsui_container"],
+.medstream-page-filter-row .medstream-department-badge,
+.medstream-page-filter-row .medstream-department-badge [class*="awsui_badge"] {
+  white-space: nowrap;
+}
+
+.medstream-content-inner [class*="awsui_layout"],
+.medstream-content-inner [class*="awsui_content"] {
+  background-color: transparent;
+}
+
+.medstream-content-inner [data-selection-root="true"],
+.medstream-content-inner [class*="awsui_content-wrapper"],
+.medstream-content-inner [class*="awsui_content-inner"],
+.medstream-content-inner [class*="awsui_wrapper"][class*="awsui_variant-container"],
+.medstream-content-inner [class*="awsui_wrapper"][class*="awsui_variant-borderless"],
+.medstream-content-inner [class*="awsui_footer-wrapper"][class*="awsui_variant-container"],
+.medstream-content-inner [class*="awsui_sticky-scrollbar"],
+.medstream-content-inner [class*="awsui_table"],
+.medstream-content-inner [class*="awsui_header-cell"],
+.medstream-content-inner [class*="awsui_body-cell"] {
+  border: 0 !important;
+  border-radius: 0 !important;
+  border-start-start-radius: 0 !important;
+  border-start-end-radius: 0 !important;
+  border-end-start-radius: 0 !important;
+  border-end-end-radius: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+.medstream-content-inner [class*="awsui_sticky-scrollbar"] {
+  clip-path: inset(-9999px 0 0 0 round 0) !important;
+}
+
+.medstream-content-inner [class*="awsui_resize-divider"],
+.medstream-content-inner [class*="awsui_divider"] {
+  display: none !important;
+}
+
+.medstream-column-divider-table [class*="awsui_header-cell"]:not(:first-child),
+.medstream-column-divider-table [class*="awsui_body-cell"]:not(:first-child) {
+  border-inline-start: 1px solid var(--border-subtle) !important;
+}
+
+.medstream-column-divider-table thead tr {
+  box-shadow: inset 0 -1px 0 var(--border-subtle);
+}
+
+.medstream-all-departments-table [class*="awsui_divider"],
+.medstream-all-departments-table [class*="awsui_resize-divider"],
+.medstream-all-departments-table [class*="awsui_resizer-wrapper"] {
+  display: block !important;
+}
+
+.medstream-all-departments-table [class*="awsui_table"] {
+  min-width: 950px;
+}
+
+.medstream-table-truncated-department {
+  display: block;
+  inline-size: 100%;
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

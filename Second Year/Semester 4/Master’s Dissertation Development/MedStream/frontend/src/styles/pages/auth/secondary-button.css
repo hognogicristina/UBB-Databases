@@ -1,0 +1,63 @@
+.auth-step-secondary-button {
+  min-height: var(--aws-control-height);
+  border-color: var(--accent-strong);
+  border-radius: 999px;
+  background: var(--surface-1);
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 20px;
+  color: var(--accent-strong);
+}
+
+.auth-step-secondary-button:hover:not(:disabled) {
+  border-color: #075aa7;
+  background: color-mix(in srgb, var(--accent-strong) 7%, var(--surface-1));
+  color: #075aa7;
+}
+
+.auth-step-secondary-button:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+[data-theme="dark"] .auth-step-secondary-button {
+  min-height: var(--aws-control-height);
+  border-width: var(--border-width-button-jm0qg7, 2px);
+  border-color: var(--color-border-button-normal-default-glqfp1, #42b4ff);
+  border-radius: var(--border-radius-button-7bgkcs, 20px);
+  background: var(--color-background-button-normal-default-7f99mv, #161d26);
+  padding-block: var(--space-button-vertical-xaxp6x, 4px);
+  padding-inline: var(--space-button-horizontal-k0c786, 20px);
+  font-family: var(--font-family-base-gmnpzl, "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif);
+  font-size: var(--font-size-body-m-a7nh2n, 14px);
+  font-weight: var(--font-weight-button-0eg20c, 700);
+  line-height: var(--line-height-body-m-2mh3ke, 20px);
+  letter-spacing: var(--font-button-letter-spacing-ufowe3, 0.005em);
+  color: var(--color-text-button-normal-default-nzalii, #42b4ff);
+  text-decoration: none;
+}
+
+[data-theme="dark"] .auth-step-secondary-button:hover:not(:disabled) {
+  border-color: var(--color-border-button-normal-hover-6a2tdq, #75cfff);
+  background: var(--color-background-button-normal-hover-53op9s, #1b232d);
+  color: var(--color-text-button-normal-hover-gusgyv, #75cfff);
+  text-decoration: none;
+}
+
+[data-theme="dark"] .auth-step-secondary-button:active:not(:disabled) {
+  border-color: var(--color-border-button-normal-active-ru7yhb, #75cfff);
+  background: var(--color-background-button-normal-active-5imwxd, #333843);
+  color: var(--color-text-button-normal-active-vihsxh, #75cfff);
+}
+
+[data-theme="dark"] .auth-step-secondary-button:focus-visible {
+  outline: 2px solid var(--color-border-item-focused-uk47pl, #42b4ff);
+  outline-offset: 2px;
+}
+
+[data-theme="dark"] .auth-step-secondary-button:disabled {
+  border-color: var(--color-border-button-normal-disabled-pkhetz, #5f6b7a);
+  background: var(--color-background-button-normal-disabled-hl039l, #161d26);
+  color: var(--color-text-button-normal-disabled-05p74s, #879196);
+}

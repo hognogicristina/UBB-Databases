@@ -1,0 +1,562 @@
+.medstream-clinical-context-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.medstream-clinical-context-section {
+  min-width: 0;
+  padding: 0;
+}
+
+.medstream-clinical-context-section:first-child {
+  padding-right: 18px;
+}
+
+.medstream-clinical-context-section + .medstream-clinical-context-section {
+  border-left: 1px solid var(--border-subtle);
+  padding-left: 18px;
+}
+
+.medstream-clinical-context-section h3 {
+  margin: 0 0 10px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.medstream-attribute-list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.medstream-attribute-row {
+  display: block;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.medstream-attribute-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content minmax(128px, max-content);
+  gap: 4px 18px;
+  align-items: start;
+}
+
+.medstream-attribute-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 12px;
+}
+
+.medstream-attribute-primary {
+  min-width: 0;
+}
+
+.medstream-attribute-primary strong {
+  display: block;
+  margin-top: 2px;
+  overflow-wrap: anywhere;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.medstream-attribute-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.medstream-attribute-summary-cell {
+  min-width: 0;
+}
+
+.medstream-attribute-status-cell {
+  min-width: max-content;
+}
+
+.medstream-attribute-summary-value {
+  display: block;
+  overflow-wrap: normal;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.medstream-attribute-status-value {
+  display: flex;
+  align-items: center;
+  min-height: 18px;
+  white-space: nowrap;
+}
+
+.medstream-attribute-status-value * {
+  white-space: nowrap;
+}
+
+.medstream-status-improving [class*="awsui_status-in-progress"],
+.medstream-status-improving [class*="awsui_icon"] {
+  color: var(--color-text-status-warning-6meo06, #855900) !important;
+}
+
+.medstream-status-improving svg circle {
+  stroke: currentColor !important;
+}
+
+.medstream-status-improving svg .filled {
+  fill: currentColor !important;
+}
+
+.medstream-history-toggle-button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  background: transparent;
+  color: var(--link);
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.medstream-history-toggle-button:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.medstream-history-toggle-button:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+.medstream-history-toggle-icon {
+  position: relative;
+  box-sizing: border-box;
+  width: 13px;
+  height: 13px;
+  border: 2px solid currentColor;
+  flex: 0 0 auto;
+}
+
+.medstream-history-toggle-icon::before,
+.medstream-history-toggle-icon::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+
+.medstream-history-toggle-icon::before {
+  top: 50%;
+  left: 2px;
+  right: 2px;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.medstream-history-toggle-icon::after {
+  top: 2px;
+  bottom: 2px;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+.medstream-history-toggle-button[aria-expanded="true"] .medstream-history-toggle-icon::after {
+  display: none;
+}
+
+.medstream-attribute-main {
+  min-width: 0;
+}
+
+.medstream-attribute-main strong {
+  display: block;
+  color: var(--link);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.medstream-attribute-main p {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.medstream-attribute-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.medstream-simple-empty {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.medstream-simple-pagination {
+  display: flex;
+  justify-content: flex-end;
+  min-height: 32px;
+  margin-top: 12px;
+}
+
+.medstream-data-table-panel,
+.medstream-alert-history-table-panel {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-primary);
+  border-radius: 16px;
+  background: var(--surface-2);
+}
+
+.medstream-data-table-header,
+.medstream-alert-history-table-header {
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 14px 16px;
+}
+
+.medstream-data-table-header h3,
+.medstream-alert-history-table-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.medstream-data-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.medstream-data-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  color: var(--text-primary);
+  font-size: 13px;
+}
+
+.medstream-alert-history-table {
+  min-width: 900px;
+}
+
+.medstream-data-table th {
+  border-bottom: 1px solid var(--border-primary);
+  background: var(--surface-muted);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  padding: 10px 14px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.medstream-data-table td {
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  line-height: 1.45;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+
+.medstream-data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.medstream-data-table tbody tr:hover td {
+  background: color-mix(in srgb, var(--link) 5%, var(--surface-2));
+}
+
+.medstream-data-table td strong {
+  display: block;
+  color: var(--link);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.medstream-data-table td span {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.medstream-data-table-empty {
+  color: var(--text-secondary) !important;
+}
+
+.medstream-data-table-pagination {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid var(--border-subtle);
+  padding: 10px 14px;
+}
+
+.medstream-dynamodb-panel,
+.medstream-dynamodb-panel > [class*="awsui_root"],
+.medstream-dynamodb-panel [class*="awsui_content-wrapper"],
+.medstream-dynamodb-panel [class*="awsui_content"],
+.medstream-dynamodb-panel [class*="awsui_content-inner"] {
+  height: 100%;
+}
+
+.medstream-dynamodb-panel [class*="awsui_content-inner"] {
+  display: flex;
+  flex-direction: column;
+}
+
+.medstream-dynamodb-panel .medstream-dynamodb-list {
+  flex: 1;
+}
+
+.medstream-dynamodb-item {
+  min-height: 104px;
+  padding: 14px 16px;
+}
+
+.medstream-dynamodb-item + .medstream-dynamodb-item {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.medstream-dynamodb-item-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.medstream-dynamodb-attribute-name {
+  margin: 0;
+  color: var(--link);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.medstream-dynamodb-attribute-value {
+  margin: 6px 0 0;
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.medstream-dynamodb-type {
+  flex: 0 0 auto;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface-muted);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 4px 8px;
+}
+
+.medstream-dynamodb-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 12px 0 0;
+}
+
+.medstream-dynamodb-meta dd {
+  margin: 4px 0 0;
+  color: var(--text-primary);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.medstream-dynamodb-empty {
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 16px;
+}
+
+.medstream-dynamodb-pagination {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid var(--border-subtle);
+  padding: 12px 16px;
+}
+
+.medstream-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.medstream-department-controls-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.medstream-clinical-controls-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+}
+
+.medstream-clinical-controls-grid > *,
+.medstream-clinical-controls-grid [class*="awsui_root"],
+.medstream-clinical-controls-grid [aria-haspopup="listbox"] {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+}
+
+.medstream-alert-controls-grid > *,
+.medstream-alert-controls-grid [class*="awsui_root"],
+.medstream-alert-controls-grid [aria-haspopup="listbox"] {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+}
+
+.medstream-clinical-record-shell {
+  overflow: hidden;
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  background: var(--surface-2);
+}
+
+.medstream-clinical-record-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.medstream-clinical-record-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.32fr);
+  gap: 20px;
+  align-items: start;
+  border-bottom: 1px solid var(--border-subtle);
+  background: transparent;
+  padding: 14px 16px;
+}
+
+.medstream-clinical-record-row-medication {
+  align-items: center;
+}
+
+.medstream-clinical-record-list > div:last-child .medstream-clinical-record-row {
+  border-bottom: 0;
+}
+
+.medstream-clinical-record-main {
+  min-width: 0;
+}
+
+.medstream-clinical-record-type {
+  margin: 0 0 4px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.medstream-clinical-record-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.medstream-clinical-record-title-row h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.medstream-clinical-record-medication-meta {
+  flex: 0 0 auto;
+  max-width: min(280px, 48%);
+  border: 1px solid var(--border-primary);
+  border-radius: 999px;
+  background: var(--surface-muted);
+  padding: 3px 8px;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.medstream-clinical-record-description {
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.medstream-clinical-record-note {
+  margin-top: 8px;
+  border-left: 2px solid var(--border-strong);
+  padding-left: 10px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.medstream-clinical-record-note p {
+  margin: 0;
+}
+
+.medstream-clinical-record-note p + p {
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.medstream-clinical-record-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  text-align: right;
+}
+
+.medstream-clinical-record-meta {
+  display: grid;
+  gap: 4px;
+}
+
+.medstream-clinical-record-meta p {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.medstream-clinical-record-meta-line span {
+  color: var(--text-secondary);
+  font-weight: 700;
+}

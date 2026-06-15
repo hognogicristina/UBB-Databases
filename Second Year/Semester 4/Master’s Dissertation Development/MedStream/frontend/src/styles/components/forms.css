@@ -1,0 +1,214 @@
+.medstream-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.medstream-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.medstream-form-field-wide {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.medstream-form-field-wide > *,
+.medstream-form-field-wide [class*="awsui_form-field"],
+.medstream-form-field-wide [class*="awsui_control"],
+.medstream-form-field-wide [class*="awsui_textarea"],
+.medstream-form-field-wide [class*="awsui_input"],
+.medstream-form-field-wide [aria-haspopup="listbox"] {
+  width: 100%;
+  max-width: none;
+}
+
+.medstream-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 16px;
+}
+
+.medstream-assignment-form {
+  margin-bottom: 16px;
+}
+
+.medstream-assignment-field {
+  gap: 8px;
+}
+
+.medstream-assignment-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 10px;
+}
+
+.medstream-assignment-select {
+  min-width: 0;
+  position: relative;
+}
+
+.medstream-assignment-select [class*="awsui_root"],
+.medstream-assignment-select [class*="button-trigger"],
+.medstream-assignment-select [aria-haspopup="listbox"] {
+  width: 100% !important;
+  inline-size: 100% !important;
+}
+
+.medstream-assignment-select [class*="awsui_dropdown"] {
+  min-inline-size: min(520px, calc(100vw - 48px)) !important;
+}
+
+.medstream-assignment-select button[class*="button-trigger"] {
+  padding-right: 64px !important;
+}
+
+.medstream-assignment-select input[class*="awsui_input-has-icon-left"] {
+  padding-left: 38px !important;
+}
+
+.medstream-assignment-clear-button,
+.medstream-assignment-clear-button button {
+  position: absolute !important;
+  top: 50%;
+  right: 34px;
+  z-index: 2;
+  transform: translateY(-50%);
+  width: 28px !important;
+  min-width: 28px !important;
+  height: 28px !important;
+  padding: 0 !important;
+}
+
+.medstream-assign-button,
+.medstream-assign-button button {
+  width: auto !important;
+  min-width: 74px !important;
+  padding-right: 14px !important;
+  padding-left: 14px !important;
+  white-space: nowrap !important;
+}
+
+.medstream-profile-list-shell {
+  min-width: 0;
+}
+
+.medstream-profile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.medstream-profile-list-row {
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  background: transparent;
+  padding: 16px;
+}
+
+.medstream-profile-row-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.medstream-profile-patient-heading-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.medstream-profile-patient-link {
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.medstream-profile-patient-link:hover,
+.medstream-profile-patient-link:focus {
+  text-decoration: none;
+}
+
+.medstream-profile-row-meta {
+  margin: 8px 0 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.medstream-profile-row-cnp {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.medstream-profile-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.medstream-profile-activity-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.medstream-profile-activity-actions {
+  display: flex;
+  margin-left: auto;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 0;
+}
+
+.medstream-profile-actions {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.medstream-profile-resend-button {
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.medstream-danger-button {
+  border: 1px solid #a33a45;
+  background: #3a1f25;
+  color: #ffd8dc;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.medstream-danger-button:hover:not(:disabled) {
+  background: #47262d;
+}
+
+.medstream-danger-button:disabled {
+  cursor: not-allowed;
+  border-color: var(--border-strong);
+  background: var(--border-primary);
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .medstream-danger-button {
+  border-color: #d13212;
+  background: #fff0ee;
+  color: #a61b00;
+}
+
+[data-theme="light"] .medstream-danger-button:hover:not(:disabled) {
+  background: #ffe3df;
+}

@@ -1,0 +1,336 @@
+.medstream-chart-panel {
+  height: 260px;
+  min-height: 260px;
+}
+
+.medstream-patient-vitals-chart-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  inline-size: 100%;
+  height: 320px;
+  min-height: 320px;
+  padding: 0;
+}
+
+.medstream-patient-vitals-chart-panel > * {
+  width: 100%;
+  inline-size: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.medstream-patient-vitals-chart-panel > :first-child {
+  flex: 0 0 auto;
+  height: auto;
+  margin-top: 0;
+}
+
+.medstream-patient-vitals-chart-panel [class*="chart-container"],
+.medstream-patient-vitals-chart-panel [class*="chart-container-outer"],
+.medstream-patient-vitals-chart-panel [class*="chart-container-inner"] {
+  width: 100%;
+  inline-size: 100%;
+  max-width: none;
+  min-width: 0;
+}
+
+.medstream-patient-vitals-legend,
+.medstream-alert-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.medstream-patient-vitals-legend span,
+.medstream-alert-chart-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.16s ease, opacity 0.16s ease;
+}
+
+.medstream-patient-chart-legend-item-muted {
+  opacity: 0.32;
+}
+
+.medstream-patient-chart-legend-item-active {
+  color: var(--text-primary);
+}
+
+.medstream-patient-vitals-legend i {
+  display: inline-block;
+  width: 14px;
+  height: 4px;
+  border-radius: 999px;
+}
+
+.medstream-alert-chart-legend i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.medstream-empty-vitals-chart {
+  display: flex;
+  min-width: 0;
+  width: 100%;
+}
+
+.medstream-empty-vitals-chart svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.medstream-empty-vitals-chart-grid {
+  stroke: var(--chart-axis);
+  stroke-opacity: 0.44;
+  stroke-width: 1;
+}
+
+.medstream-empty-vitals-chart-axis {
+  stroke: var(--chart-axis);
+  stroke-width: 2;
+}
+
+.medstream-empty-vitals-chart-tick {
+  fill: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.medstream-empty-vitals-chart-axis-title {
+  fill: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.medstream-aws-bar-chart {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  width: 100%;
+  flex-direction: column;
+  padding-bottom: 24px;
+}
+
+.medstream-aws-bar-chart-svg {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  overflow: visible;
+}
+
+.medstream-aws-bar-chart-title,
+.medstream-aws-bar-chart-axis-title {
+  fill: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.medstream-aws-bar-chart-grid {
+  stroke: var(--chart-axis);
+  stroke-opacity: 0.48;
+  stroke-width: 1;
+}
+
+.medstream-aws-bar-chart-baseline {
+  stroke: var(--chart-axis);
+  stroke-width: 2;
+}
+
+.medstream-aws-bar-chart-tick,
+.medstream-aws-bar-chart-x-label {
+  fill: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.medstream-aws-bar-chart-bar {
+  cursor: pointer;
+  transition: filter 0.16s ease, opacity 0.16s ease;
+}
+
+.medstream-aws-bar-chart-bar-muted {
+  opacity: 0.28;
+}
+
+.medstream-aws-bar-chart-bar-hovered {
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.28));
+}
+
+.medstream-aws-bar-chart-bar-overlay {
+  fill: rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+
+.medstream-aws-bar-chart-tooltip {
+  position: absolute;
+  z-index: 4;
+  width: max-content;
+  min-width: 224px;
+  max-width: min(320px, 48%);
+  transform: translate(14px, -50%);
+  border: var(--border-width-popover-nflirh, 2px) solid var(--color-border-popover-1ye6tz, #656871);
+  border-radius: 8px;
+  background: var(--color-background-popover-e20fy8, #1b232d);
+  box-shadow: var(--shadow-popover-pkane9, 0px 4px 20px 1px rgba(0, 4, 12, 1));
+  color: var(--color-text-body-default-vvtq8u, #c6c6cd);
+  font-family: var(--font-family-base-gmnpzl, "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif);
+  font-size: var(--font-size-body-m-a7nh2n, 14px);
+  font-weight: var(--font-weight-normal-cxw1m3, 400);
+  line-height: var(--line-height-body-m-2mh3ke, 20px);
+  padding: var(--space-static-s-t763lu, 12px);
+  pointer-events: none;
+}
+
+.medstream-aws-bar-chart-tooltip[data-placement="left"] {
+  transform: translate(calc(-100% - 14px), -50%);
+}
+
+.medstream-aws-bar-chart-tooltip::before {
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  width: 12px;
+  height: 12px;
+  transform: translateY(-50%) rotate(45deg);
+  border-bottom: var(--border-width-popover-nflirh, 2px) solid var(--color-border-popover-1ye6tz, #656871);
+  border-left: var(--border-width-popover-nflirh, 2px) solid var(--color-border-popover-1ye6tz, #656871);
+  background: var(--color-background-popover-e20fy8, #1b232d);
+  content: "";
+}
+
+.medstream-aws-bar-chart-tooltip[data-placement="left"]::before {
+  right: -8px;
+  left: auto;
+  border: 0;
+  border-top: var(--border-width-popover-nflirh, 2px) solid var(--color-border-popover-1ye6tz, #656871);
+  border-right: var(--border-width-popover-nflirh, 2px) solid var(--color-border-popover-1ye6tz, #656871);
+}
+
+.medstream-aws-bar-chart-tooltip strong {
+  display: block;
+  margin-bottom: var(--space-xs-ymlm0b, 8px);
+  color: var(--color-text-body-default-vvtq8u, #c6c6cd);
+  font-family: var(--font-family-heading-ugphat, "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif);
+  font-size: var(--font-size-heading-xs-j8yzxv, 14px);
+  font-weight: var(--font-weight-heading-xs-wqqpne, 700);
+  letter-spacing: var(--letter-spacing-heading-xs-fgog7a, normal);
+  line-height: var(--line-height-heading-xs-q9j004, 18px);
+}
+
+.medstream-aws-bar-chart-tooltip span {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr) auto;
+  column-gap: var(--space-xxs-hwfkai, 4px);
+  align-items: start;
+  color: var(--color-text-body-secondary-yna5sb, #c6c6cd);
+  font-size: var(--font-size-body-m-a7nh2n, 14px);
+  font-weight: var(--font-weight-normal-cxw1m3, 400);
+  line-height: var(--line-height-body-m-2mh3ke, 20px);
+  white-space: nowrap;
+}
+
+.medstream-aws-bar-chart-tooltip i,
+.medstream-aws-bar-chart-legend-item i {
+  display: inline-block;
+  border-radius: 3px;
+}
+
+.medstream-aws-bar-chart-tooltip i {
+  width: 14px;
+  height: 4px;
+  margin-top: 9px;
+  align-self: start;
+  border-radius: 999px;
+}
+
+.medstream-aws-bar-chart-tooltip em {
+  overflow: hidden;
+  min-width: 0;
+  color: var(--color-text-group-label-a2qc05, #c6c6cd);
+  font-style: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.medstream-aws-bar-chart-tooltip b {
+  margin-left: var(--space-xxl-32srm4, 32px);
+  color: var(--color-text-body-default-vvtq8u, #c6c6cd);
+  font-weight: var(--font-weight-normal-cxw1m3, 400);
+  white-space: nowrap;
+}
+
+.medstream-aws-bar-chart-legend {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 30px;
+  margin-top: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.medstream-aws-bar-chart-legend-left {
+  justify-content: flex-start;
+}
+
+.medstream-aws-bar-chart-legend-right {
+  justify-content: flex-end;
+}
+
+.medstream-aws-bar-chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.16s ease, opacity 0.16s ease;
+}
+
+.medstream-aws-bar-chart-legend-item i {
+  width: 14px;
+  height: 14px;
+}
+
+.medstream-aws-bar-chart-legend-item-muted {
+  opacity: 0.32;
+}
+
+.medstream-aws-bar-chart-legend-item-active {
+  color: var(--text-primary);
+}
+
+.medstream-medication-effectiveness-chart-panel {
+  display: flex;
+  align-items: stretch;
+  height: 420px;
+  min-height: 420px;
+  margin-top: 0;
+  padding: 4px 10px 12px;
+}
+
+.medstream-medication-effectiveness-chart-panel > .medstream-aws-bar-chart {
+  width: 100%;
+}

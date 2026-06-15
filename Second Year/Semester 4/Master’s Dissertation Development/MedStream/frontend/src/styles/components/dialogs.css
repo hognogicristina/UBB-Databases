@@ -1,0 +1,322 @@
+.medstream-dialog-panel {
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  background: var(--surface-1);
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.18);
+}
+
+.medstream-activity-dialog {
+  max-width: 760px;
+  max-height: calc(100vh - 112px);
+  overflow: auto;
+  padding: 0;
+}
+
+.medstream-activity-modal-overlay {
+  align-items: flex-start;
+  overflow: auto;
+  padding-top: 96px;
+}
+
+.medstream-activity-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 20px 24px 16px;
+}
+
+.medstream-activity-dialog-eyebrow {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.medstream-activity-dialog-title {
+  margin: 6px 0 0;
+  color: var(--text-primary);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.medstream-activity-dialog-form {
+  padding: 0;
+}
+
+.medstream-activity-date-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.medstream-activity-description {
+  min-height: 112px;
+  resize: vertical;
+}
+
+.medstream-clearable-field {
+  position: relative;
+  width: 100%;
+}
+
+.medstream-clearable-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: var(--aws-control-height);
+  min-height: var(--aws-control-height);
+  border: 1px solid var(--input-avc-border);
+  border-radius: 6px;
+  background-color: var(--input-avc-bg);
+  color: var(--input-avc-text);
+  font-size: 0.875rem;
+  line-height: 20px;
+  outline: none;
+  padding: 5px 34px 5px var(--aws-control-x-padding);
+}
+
+.medstream-clearable-input:hover {
+  border-color: var(--input-avc-border-hover);
+}
+
+.medstream-clearable-input:focus {
+  border-color: var(--link);
+  box-shadow: 0 0 0 2px var(--input-avc-focus-ring);
+}
+
+.medstream-clearable-input::placeholder {
+  color: var(--input-avc-placeholder);
+  font-style: italic;
+}
+
+.medstream-clearable-input[type="date"],
+.medstream-clearable-input[type="time"] {
+  appearance: none;
+  -webkit-appearance: none;
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  color-scheme: light;
+  position: relative;
+  padding-right: 36px;
+}
+
+.medstream-clearable-input[type="date"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%230972d3' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+}
+
+.medstream-clearable-input[type="time"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%230972d3' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
+}
+
+.medstream-clearable-input[type="search"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23879196' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-4.35-4.35'/%3E%3C/svg%3E");
+  background-position: left 12px center;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  padding-left: 40px;
+}
+
+[data-theme="dark"] .medstream-clearable-input[type="date"],
+[data-theme="dark"] .medstream-clearable-input[type="time"] {
+  color-scheme: light;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+.medstream-clearable-input[type="date"]::-webkit-calendar-picker-indicator,
+.medstream-clearable-input[type="time"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 0;
+  width: 22px;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.medstream-clearable-textarea-field .medstream-clearable-input {
+  height: auto;
+  min-height: 112px;
+  resize: vertical;
+}
+
+.medstream-clearable-textarea-field .medstream-activity-description {
+  min-height: 64px;
+}
+
+.medstream-activity-participants {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 16px;
+}
+
+.medstream-activity-participants-single {
+  grid-template-columns: 1fr;
+}
+
+.medstream-activity-participant-panel {
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  min-width: 0;
+  flex-direction: column;
+  border: 1px solid var(--input-avc-border);
+  border-radius: 8px;
+  background: var(--input-avc-bg);
+  padding: 12px;
+}
+
+.medstream-activity-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.medstream-activity-panel-title {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.medstream-activity-panel-title-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.medstream-activity-panel-count {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.medstream-activity-doctor-multiselect {
+  margin-top: 24px;
+  --aws-selected-token-bg: #12233a;
+  --aws-selected-token-text: #ffffff;
+}
+
+[data-theme="dark"] .medstream-activity-doctor-multiselect {
+  --aws-selected-token-bg: var(--aws-selected-option-bg);
+  --aws-selected-token-border: var(--aws-selected-option-border);
+  --aws-selected-token-text: var(--input-avc-text);
+}
+
+.medstream-activity-doctor-multiselect [class*="button-trigger"],
+.medstream-activity-doctor-multiselect button[aria-haspopup="dialog"] {
+  border-color: var(--input-avc-border) !important;
+  background-color: var(--input-avc-bg) !important;
+}
+
+.medstream-activity-doctor-multiselect [class*="button-trigger"]:hover,
+.medstream-activity-doctor-multiselect button[aria-haspopup="dialog"]:hover {
+  border-color: var(--input-avc-border-hover) !important;
+  background-color: var(--input-avc-bg) !important;
+}
+
+.medstream-activity-doctor-multiselect [class*="awsui_token-box"][class*="awsui_token-box-readonly"] {
+  border: 1px solid var(--aws-readonly-token-border-subtle) !important;
+  background: transparent !important;
+}
+
+.medstream-transfer-doctor-select [class*="button-trigger"][disabled],
+.medstream-transfer-doctor-select button[aria-haspopup="listbox"][disabled],
+.medstream-transfer-doctor-select button[aria-haspopup="listbox"][aria-disabled="true"] {
+  border: 1px solid var(--border-soft) !important;
+  background-color: var(--surface-1) !important;
+  color: var(--input-avc-placeholder) !important;
+  cursor: not-allowed !important;
+  opacity: 1 !important;
+}
+
+.medstream-transfer-doctor-select [class*="button-trigger"][disabled] [class*="placeholder"],
+.medstream-transfer-doctor-select button[aria-haspopup="listbox"][disabled] [class*="placeholder"],
+.medstream-transfer-doctor-select button[aria-haspopup="listbox"][aria-disabled="true"] [class*="placeholder"] {
+  color: var(--input-avc-placeholder) !important;
+  font-style: italic !important;
+}
+
+.medstream-transfer-doctor-select [class*="button-trigger"][disabled] svg,
+.medstream-transfer-doctor-select button[aria-haspopup="listbox"][disabled] svg,
+.medstream-transfer-doctor-select button[aria-haspopup="listbox"][aria-disabled="true"] svg {
+  color: var(--text-subtle) !important;
+  fill: currentColor !important;
+}
+
+.medstream-transfer-doctor-info {
+  display: block;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+.medstream-transfer-doctor-info-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  list-style: none;
+  padding: 0 0 10px;
+}
+
+.medstream-transfer-doctor-info-header::-webkit-details-marker {
+  display: none;
+}
+
+.medstream-transfer-doctor-info-header::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0;
+  height: 0;
+  border-top: 7px solid var(--text-primary);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+}
+
+.medstream-transfer-doctor-info:not([open]) .medstream-transfer-doctor-info-header {
+  border-bottom-color: transparent;
+  padding-bottom: 0;
+}
+
+.medstream-transfer-doctor-info:not([open]) .medstream-transfer-doctor-info-header::before {
+  transform: rotate(-90deg);
+}
+
+.medstream-transfer-doctor-info-body {
+  padding-top: 12px;
+  color: var(--text-secondary) !important;
+}
+
+.medstream-activity-patient-search {
+  margin-top: 16px;
+}
+
+.medstream-activity-participant-multiselect {
+  margin-top: 24px;
+}
+
+.medstream-activity-participant-pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 16px;
+}

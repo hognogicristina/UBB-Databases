@@ -1,0 +1,481 @@
+textarea.login-input,
+textarea.console-input {
+  height: auto;
+  background-image: none;
+  padding: 8px 10px;
+}
+
+.app-shell input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+.medstream-content-inner input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+.medstream-form-grid input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+.medstream-form-field-wide input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+.medstream-controls-grid input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+.app-shell textarea[class*="awsui_textarea"],
+.medstream-content-inner textarea[class*="awsui_textarea"],
+.medstream-form-grid textarea[class*="awsui_textarea"],
+.medstream-form-field-wide textarea[class*="awsui_textarea"],
+.medstream-controls-grid textarea[class*="awsui_textarea"] {
+  box-sizing: border-box !important;
+  height: var(--aws-control-height) !important;
+  min-height: var(--aws-control-height) !important;
+  border-color: var(--input-avc-border) !important;
+  border-radius: 6px !important;
+  background-color: var(--input-avc-bg) !important;
+  color: var(--input-avc-text) !important;
+  font-size: 0.875rem !important;
+  line-height: 20px !important;
+  box-shadow: none !important;
+}
+
+.app-shell textarea[class*="awsui_textarea"],
+.medstream-content-inner textarea[class*="awsui_textarea"],
+.medstream-form-grid textarea[class*="awsui_textarea"],
+.medstream-form-field-wide textarea[class*="awsui_textarea"],
+.medstream-controls-grid textarea[class*="awsui_textarea"] {
+  height: auto !important;
+  min-height: 88px !important;
+  padding: 8px var(--aws-control-x-padding) !important;
+  resize: vertical;
+}
+
+.app-shell input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):hover,
+.medstream-content-inner input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):hover,
+.medstream-form-grid input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):hover,
+.medstream-form-field-wide input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):hover,
+.medstream-controls-grid input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):hover,
+.app-shell textarea[class*="awsui_textarea"]:hover,
+.medstream-content-inner textarea[class*="awsui_textarea"]:hover,
+.medstream-form-grid textarea[class*="awsui_textarea"]:hover,
+.medstream-form-field-wide textarea[class*="awsui_textarea"]:hover,
+.medstream-controls-grid textarea[class*="awsui_textarea"]:hover {
+  border-color: var(--input-avc-border-hover) !important;
+}
+
+.app-shell input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):focus,
+.app-shell input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):focus-visible,
+.medstream-content-inner input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):focus,
+.medstream-content-inner input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):focus-visible,
+.medstream-form-grid input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):focus,
+.medstream-form-grid input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):focus-visible,
+.medstream-form-field-wide input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):focus,
+.medstream-form-field-wide input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):focus-visible,
+.medstream-controls-grid input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):focus,
+.medstream-controls-grid input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):focus-visible,
+.app-shell textarea[class*="awsui_textarea"]:focus,
+.app-shell textarea[class*="awsui_textarea"]:focus-visible,
+.medstream-content-inner textarea[class*="awsui_textarea"]:focus,
+.medstream-content-inner textarea[class*="awsui_textarea"]:focus-visible,
+.medstream-form-grid textarea[class*="awsui_textarea"]:focus,
+.medstream-form-grid textarea[class*="awsui_textarea"]:focus-visible,
+.medstream-form-field-wide textarea[class*="awsui_textarea"]:focus,
+.medstream-form-field-wide textarea[class*="awsui_textarea"]:focus-visible,
+.medstream-controls-grid textarea[class*="awsui_textarea"]:focus,
+.medstream-controls-grid textarea[class*="awsui_textarea"]:focus-visible {
+  border-color: var(--link) !important;
+  box-shadow: 0 0 0 2px var(--input-avc-focus-ring) !important;
+  outline: 0 !important;
+}
+
+.app-shell input[class*="awsui_input"][disabled]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+.medstream-content-inner input[class*="awsui_input"][disabled]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+.medstream-form-grid input[class*="awsui_input"][disabled]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+.medstream-form-field-wide input[class*="awsui_input"][disabled]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+.medstream-controls-grid input[class*="awsui_input"][disabled]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+.app-shell textarea[class*="awsui_textarea"][disabled],
+.medstream-content-inner textarea[class*="awsui_textarea"][disabled],
+.medstream-form-grid textarea[class*="awsui_textarea"][disabled],
+.medstream-form-field-wide textarea[class*="awsui_textarea"][disabled],
+.medstream-controls-grid textarea[class*="awsui_textarea"][disabled] {
+  border-color: var(--input-avc-border) !important;
+  background-color: var(--input-avc-bg) !important;
+  color: var(--text-subtle) !important;
+  cursor: not-allowed !important;
+  opacity: 0.72 !important;
+}
+
+.app-shell input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"])::placeholder,
+.medstream-content-inner input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"])::placeholder,
+.medstream-form-grid input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"])::placeholder,
+.medstream-form-field-wide input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"])::placeholder,
+.medstream-controls-grid input[class*="awsui_input"]:not([type="checkbox"]):not([type="radio"]):not([type="hidden"])::placeholder,
+.app-shell textarea[class*="awsui_textarea"]::placeholder,
+.medstream-content-inner textarea[class*="awsui_textarea"]::placeholder,
+.medstream-form-grid textarea[class*="awsui_textarea"]::placeholder,
+.medstream-form-field-wide textarea[class*="awsui_textarea"]::placeholder,
+.medstream-controls-grid textarea[class*="awsui_textarea"]::placeholder {
+  color: var(--input-avc-placeholder) !important;
+  font-style: italic !important;
+}
+
+.login-field [class*="awsui_root"],
+.medstream-form-grid [class*="awsui_root"],
+.medstream-form-field-wide [class*="awsui_root"],
+.medstream-clinical-controls-grid [class*="awsui_root"],
+.medstream-controls-grid [class*="awsui_root"] {
+  width: 100% !important;
+  inline-size: 100% !important;
+}
+
+.login-field [class*="button-trigger"],
+.login-field [aria-haspopup="listbox"],
+.medstream-form-grid [class*="button-trigger"],
+.medstream-form-grid [aria-haspopup="listbox"],
+.medstream-form-field-wide [class*="button-trigger"],
+.medstream-form-field-wide [aria-haspopup="listbox"],
+.medstream-clinical-controls-grid [class*="button-trigger"],
+.medstream-clinical-controls-grid [aria-haspopup="listbox"],
+.medstream-controls-grid [class*="button-trigger"],
+.medstream-controls-grid [aria-haspopup="listbox"],
+.medstream-page-filter-row [class*="button-trigger"],
+.medstream-page-filter-row [aria-haspopup="listbox"],
+.app-shell [class*="button-trigger"],
+.app-shell button[aria-haspopup="listbox"],
+.medstream-content-inner button[aria-haspopup="listbox"] {
+  width: 100% !important;
+  inline-size: 100% !important;
+  height: var(--aws-control-height) !important;
+  min-height: var(--aws-control-height) !important;
+  min-block-size: var(--aws-control-height) !important;
+  border-color: var(--input-avc-border) !important;
+  border-radius: 6px !important;
+  background-color: var(--input-avc-bg) !important;
+  color: var(--input-avc-text) !important;
+  padding: 5px var(--aws-control-x-padding) !important;
+  font-size: 0.875rem !important;
+  line-height: 20px !important;
+  align-items: center !important;
+  box-shadow: none !important;
+}
+
+.login-field [class*="button-trigger"]:hover,
+.login-field [aria-haspopup="listbox"]:hover,
+.medstream-form-grid [class*="button-trigger"]:hover,
+.medstream-form-grid [aria-haspopup="listbox"]:hover,
+.medstream-form-field-wide [class*="button-trigger"]:hover,
+.medstream-form-field-wide [aria-haspopup="listbox"]:hover,
+.medstream-clinical-controls-grid [class*="button-trigger"]:hover,
+.medstream-clinical-controls-grid [aria-haspopup="listbox"]:hover,
+.medstream-controls-grid [class*="button-trigger"]:hover,
+.medstream-controls-grid [aria-haspopup="listbox"]:hover,
+.medstream-page-filter-row [class*="button-trigger"]:hover,
+.medstream-page-filter-row [aria-haspopup="listbox"]:hover,
+.app-shell [class*="button-trigger"]:hover,
+.app-shell button[aria-haspopup="listbox"]:hover,
+.medstream-content-inner button[aria-haspopup="listbox"]:hover {
+  border-color: var(--input-avc-border-hover) !important;
+  background-color: var(--input-avc-bg) !important;
+}
+
+.login-field [class*="button-trigger"]:focus,
+.login-field [class*="button-trigger"]:focus-visible,
+.login-field [aria-haspopup="listbox"]:focus,
+.login-field [aria-haspopup="listbox"]:focus-visible,
+.medstream-form-grid [class*="button-trigger"]:focus,
+.medstream-form-grid [class*="button-trigger"]:focus-visible,
+.medstream-form-grid [aria-haspopup="listbox"]:focus,
+.medstream-form-grid [aria-haspopup="listbox"]:focus-visible,
+.medstream-form-field-wide [class*="button-trigger"]:focus,
+.medstream-form-field-wide [class*="button-trigger"]:focus-visible,
+.medstream-form-field-wide [aria-haspopup="listbox"]:focus,
+.medstream-form-field-wide [aria-haspopup="listbox"]:focus-visible,
+.medstream-clinical-controls-grid [class*="button-trigger"]:focus,
+.medstream-clinical-controls-grid [class*="button-trigger"]:focus-visible,
+.medstream-clinical-controls-grid [aria-haspopup="listbox"]:focus,
+.medstream-clinical-controls-grid [aria-haspopup="listbox"]:focus-visible,
+.medstream-controls-grid [class*="button-trigger"]:focus,
+.medstream-controls-grid [class*="button-trigger"]:focus-visible,
+.medstream-controls-grid [aria-haspopup="listbox"]:focus,
+.medstream-controls-grid [aria-haspopup="listbox"]:focus-visible,
+.medstream-page-filter-row [class*="button-trigger"]:focus,
+.medstream-page-filter-row [class*="button-trigger"]:focus-visible,
+.medstream-page-filter-row [aria-haspopup="listbox"]:focus,
+.medstream-page-filter-row [aria-haspopup="listbox"]:focus-visible,
+.app-shell [class*="button-trigger"]:focus,
+.app-shell [class*="button-trigger"]:focus-visible,
+.app-shell button[aria-haspopup="listbox"]:focus,
+.app-shell button[aria-haspopup="listbox"]:focus-visible,
+.medstream-content-inner button[aria-haspopup="listbox"]:focus,
+.medstream-content-inner button[aria-haspopup="listbox"]:focus-visible {
+  border-color: var(--link) !important;
+  box-shadow: 0 0 0 2px var(--input-avc-focus-ring) !important;
+  outline: 0 !important;
+}
+
+.app-shell [class*="button-trigger"][disabled],
+.app-shell [class*="button-trigger"][aria-disabled="true"],
+.app-shell button[aria-haspopup="listbox"][disabled],
+.app-shell button[aria-haspopup="listbox"][aria-disabled="true"],
+.login-field [class*="button-trigger"][disabled],
+.login-field button[aria-haspopup="listbox"][disabled],
+.medstream-form-grid [class*="button-trigger"][disabled],
+.medstream-form-grid button[aria-haspopup="listbox"][disabled],
+.login-field [aria-haspopup="listbox"][aria-disabled="true"],
+.medstream-form-grid [aria-haspopup="listbox"][aria-disabled="true"],
+.medstream-form-field-wide [aria-haspopup="listbox"][aria-disabled="true"],
+.medstream-clinical-controls-grid [aria-haspopup="listbox"][aria-disabled="true"],
+.medstream-controls-grid [aria-haspopup="listbox"][aria-disabled="true"],
+.medstream-page-filter-row [aria-haspopup="listbox"][aria-disabled="true"],
+.medstream-content-inner button[aria-haspopup="listbox"][disabled],
+.medstream-content-inner button[aria-haspopup="listbox"][aria-disabled="true"] {
+  border-color: var(--input-avc-border) !important;
+  background-color: var(--input-avc-bg) !important;
+  color: var(--text-subtle) !important;
+  cursor: not-allowed !important;
+  opacity: 0.72 !important;
+}
+
+.login-field [class*="button-trigger"] [class*="trigger"],
+.login-field [class*="button-trigger"] [class*="label"],
+.login-field [class*="button-trigger"] [class*="selected"],
+.login-field [class*="button-trigger"] [class*="placeholder"],
+.login-field [aria-haspopup="listbox"] *,
+.medstream-form-grid [class*="button-trigger"] [class*="trigger"],
+.medstream-form-grid [class*="button-trigger"] [class*="label"],
+.medstream-form-grid [class*="button-trigger"] [class*="selected"],
+.medstream-form-grid [class*="button-trigger"] [class*="placeholder"],
+.medstream-form-grid [aria-haspopup="listbox"] *,
+.medstream-form-field-wide [class*="button-trigger"] [class*="trigger"],
+.medstream-form-field-wide [class*="button-trigger"] [class*="label"],
+.medstream-form-field-wide [class*="button-trigger"] [class*="selected"],
+.medstream-form-field-wide [class*="button-trigger"] [class*="placeholder"],
+.medstream-form-field-wide [aria-haspopup="listbox"] *,
+.medstream-clinical-controls-grid [class*="button-trigger"] [class*="trigger"],
+.medstream-clinical-controls-grid [class*="button-trigger"] [class*="label"],
+.medstream-clinical-controls-grid [class*="button-trigger"] [class*="selected"],
+.medstream-clinical-controls-grid [class*="button-trigger"] [class*="placeholder"],
+.medstream-clinical-controls-grid [aria-haspopup="listbox"] *,
+.medstream-controls-grid [class*="button-trigger"] [class*="trigger"],
+.medstream-controls-grid [class*="button-trigger"] [class*="label"],
+.medstream-controls-grid [class*="button-trigger"] [class*="selected"],
+.medstream-controls-grid [class*="button-trigger"] [class*="placeholder"],
+.medstream-controls-grid [aria-haspopup="listbox"] *,
+.medstream-page-filter-row [class*="button-trigger"] [class*="trigger"],
+.medstream-page-filter-row [class*="button-trigger"] [class*="label"],
+.medstream-page-filter-row [class*="button-trigger"] [class*="selected"],
+.medstream-page-filter-row [class*="button-trigger"] [class*="placeholder"],
+.medstream-page-filter-row [aria-haspopup="listbox"] *,
+.app-shell [class*="button-trigger"] [class*="trigger"],
+.app-shell [class*="button-trigger"] [class*="label"],
+.app-shell [class*="button-trigger"] [class*="selected"],
+.app-shell [class*="button-trigger"] [class*="placeholder"],
+.app-shell button[aria-haspopup="listbox"] *,
+.medstream-content-inner button[aria-haspopup="listbox"] * {
+  color: inherit !important;
+  line-height: 20px !important;
+}
+
+.app-shell [class*="button-trigger"] [class*="placeholder"],
+.login-field [aria-haspopup="listbox"] [class*="placeholder"],
+.medstream-form-grid [aria-haspopup="listbox"] [class*="placeholder"],
+.medstream-form-field-wide [aria-haspopup="listbox"] [class*="placeholder"],
+.medstream-clinical-controls-grid [aria-haspopup="listbox"] [class*="placeholder"],
+.medstream-controls-grid [aria-haspopup="listbox"] [class*="placeholder"],
+.medstream-page-filter-row [aria-haspopup="listbox"] [class*="placeholder"],
+.app-shell button[aria-haspopup="listbox"] [class*="placeholder"],
+.medstream-content-inner button[aria-haspopup="listbox"] [class*="placeholder"] {
+  color: var(--input-avc-placeholder) !important;
+}
+
+.app-shell .medstream-activity-doctor-multiselect [class*="button-trigger"],
+.app-shell .medstream-activity-doctor-multiselect button[aria-haspopup="dialog"] {
+  border-color: var(--input-avc-border) !important;
+  background-color: var(--input-avc-bg) !important;
+}
+
+.app-shell .medstream-activity-doctor-multiselect [class*="button-trigger"]:hover,
+.app-shell .medstream-activity-doctor-multiselect [class*="button-trigger"]:focus,
+.app-shell .medstream-activity-doctor-multiselect [class*="button-trigger"]:focus-visible,
+.app-shell .medstream-activity-doctor-multiselect button[aria-haspopup="dialog"]:hover,
+.app-shell .medstream-activity-doctor-multiselect button[aria-haspopup="dialog"]:focus,
+.app-shell .medstream-activity-doctor-multiselect button[aria-haspopup="dialog"]:focus-visible {
+  border-color: var(--input-avc-border-hover) !important;
+  background-color: var(--input-avc-bg) !important;
+}
+
+.app-shell .medstream-activity-doctor-multiselect [class*="awsui_token-box"] {
+  border: 1px solid var(--aws-selected-token-border) !important;
+  background-color: var(--aws-selected-token-bg) !important;
+  color: var(--aws-selected-token-text) !important;
+}
+
+.app-shell .medstream-activity-doctor-multiselect [class*="awsui_token-box"][class*="awsui_token-box-readonly"] {
+  border: 1px solid var(--aws-readonly-token-border-subtle) !important;
+  background: transparent !important;
+  color: var(--aws-readonly-token-text) !important;
+}
+
+.app-shell .medstream-activity-doctor-multiselect [class*="awsui_token-box"] [class*="awsui_option"],
+.app-shell .medstream-activity-doctor-multiselect [class*="awsui_token-box"] [class*="awsui_content"],
+.app-shell .medstream-activity-doctor-multiselect [class*="awsui_token-box"] [class*="awsui_label-content"],
+.app-shell .medstream-activity-doctor-multiselect [class*="awsui_token-box"] [class*="awsui_label"] {
+  color: inherit !important;
+}
+
+.app-shell .medstream-activity-doctor-multiselect [class*="awsui_token-box"] [class*="dismiss-button"] {
+  color: var(--aws-selected-token-dismiss) !important;
+}
+
+.app-shell .medstream-activity-doctor-multiselect [class*="awsui_token-box"][class*="awsui_token-box-readonly"] [class*="dismiss-button"] {
+  color: var(--aws-readonly-token-dismiss) !important;
+}
+
+.app-shell .medstream-activity-doctor-multiselect [class*="awsui_token-box"] [class*="dismiss-button"] svg {
+  color: inherit !important;
+}
+
+.medstream-alert-cnp-filter-control,
+.medstream-alert-cnp-filter-control [class*="awsui_root"],
+.medstream-alert-cnp-filter-control [class*="awsui_input-container"],
+.medstream-alert-cnp-filter-control [class*="awsui_input-type-search"] {
+  width: 100% !important;
+  inline-size: 100% !important;
+  background-color: var(--input-avc-bg) !important;
+}
+
+.medstream-alert-cnp-filter-control input[aria-label="Filter alerts by patient CNP"] {
+  width: 100% !important;
+  inline-size: 100% !important;
+  height: var(--aws-control-height) !important;
+  min-height: var(--aws-control-height) !important;
+  min-block-size: var(--aws-control-height) !important;
+  border-color: var(--input-avc-border) !important;
+  background-color: var(--input-avc-bg) !important;
+  color: var(--input-avc-text) !important;
+  font-size: 0.875rem !important;
+  line-height: 20px !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+.medstream-alert-cnp-filter-control input[aria-label="Filter alerts by patient CNP"]:hover {
+  border-color: var(--input-avc-border-hover) !important;
+}
+
+.medstream-alert-cnp-filter-control input[aria-label="Filter alerts by patient CNP"]::placeholder {
+  color: var(--input-avc-placeholder) !important;
+  font-style: normal !important;
+}
+
+.medstream-alert-cnp-filter-control [class*="awsui_icon"] {
+  color: var(--input-avc-placeholder) !important;
+}
+
+[class*="dropdown-content-wrapper"],
+[class*="dropdown-content-wrapper"] [class*="dropdown-content"],
+[class*="dropdown-content-wrapper"] [class*="options-list"],
+[class*="dropdown-content-wrapper"] [class*="items-list-container"] {
+  border-color: var(--input-avc-border) !important;
+  background-color: var(--input-avc-bg) !important;
+  color: var(--input-avc-text) !important;
+}
+
+[class*="dropdown-content-wrapper"] [class*="selectable-item"],
+[class*="dropdown-content-wrapper"] [class*="selectable-item"] *,
+[class*="dropdown-content-wrapper"] [role="option"],
+[class*="dropdown-content-wrapper"] [role="option"] * {
+  background-color: transparent !important;
+  color: var(--input-avc-text) !important;
+}
+
+[class*="dropdown-content-wrapper"] [role="option"],
+[class*="dropdown-content-wrapper"] [class*="selectable-item"],
+[class*="dropdown-content-wrapper"] [role="menuitem"],
+[class*="dropdown-content-wrapper"] [class*="menu-item"] {
+  box-sizing: border-box !important;
+  border: 1px solid transparent !important;
+  border-radius: 6px !important;
+}
+
+[class*="dropdown-content-wrapper"] [role="option"][aria-selected="true"],
+[class*="dropdown-content-wrapper"] [role="option"][aria-checked="true"],
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][aria-selected="true"],
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][aria-checked="true"],
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][class*="awsui_selected"] {
+  border: 1px solid var(--aws-selected-option-border) !important;
+  background-color: var(--aws-selected-option-bg) !important;
+  color: var(--input-avc-text) !important;
+}
+
+[data-theme="dark"] [class*="dropdown-content-wrapper"] [role="option"][aria-selected="true"],
+[data-theme="dark"] [class*="dropdown-content-wrapper"] [role="option"][aria-checked="true"],
+[data-theme="dark"] [class*="dropdown-content-wrapper"] [class*="selectable-item"][aria-selected="true"],
+[data-theme="dark"] [class*="dropdown-content-wrapper"] [class*="selectable-item"][aria-checked="true"],
+[data-theme="dark"] [class*="dropdown-content-wrapper"] [class*="selectable-item"][class*="awsui_selected"] {
+  border-width: var(--border-width-token-2ukdpu, 2px) !important;
+  border-color: var(--aws-selected-option-border) !important;
+  background-color: var(--aws-selected-option-bg) !important;
+  color: var(--color-text-body-default-vvtq8u, var(--input-avc-text)) !important;
+}
+
+[data-theme="dark"] [class*="dropdown-content-wrapper"] [role="option"][aria-selected="true"] *,
+[data-theme="dark"] [class*="dropdown-content-wrapper"] [role="option"][aria-checked="true"] *,
+[data-theme="dark"] [class*="dropdown-content-wrapper"] [class*="selectable-item"][aria-selected="true"] *,
+[data-theme="dark"] [class*="dropdown-content-wrapper"] [class*="selectable-item"][aria-checked="true"] *,
+[data-theme="dark"] [class*="dropdown-content-wrapper"] [class*="selectable-item"][class*="awsui_selected"] * {
+  background-color: transparent !important;
+  color: var(--color-text-body-default-vvtq8u, var(--input-avc-text)) !important;
+}
+
+[class*="dropdown-content-wrapper"] [role="option"][aria-selected="true"]:hover,
+[class*="dropdown-content-wrapper"] [role="option"][aria-checked="true"]:hover,
+[class*="dropdown-content-wrapper"] [role="option"][aria-selected="true"][class*="highlighted"],
+[class*="dropdown-content-wrapper"] [role="option"][aria-checked="true"][class*="highlighted"],
+[class*="dropdown-content-wrapper"] [role="option"][aria-selected="true"][class*="has-background"],
+[class*="dropdown-content-wrapper"] [role="option"][aria-checked="true"][class*="has-background"],
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][aria-selected="true"]:hover,
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][aria-checked="true"]:hover,
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][class*="awsui_selected"]:hover,
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][aria-selected="true"][class*="highlighted"],
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][aria-checked="true"][class*="highlighted"],
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][class*="awsui_selected"][class*="highlighted"],
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][aria-selected="true"][class*="has-background"],
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][aria-checked="true"][class*="has-background"],
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][class*="awsui_selected"][class*="has-background"] {
+  border-color: var(--aws-selected-option-border) !important;
+  background-color: var(--aws-selected-option-bg) !important;
+  color: var(--input-avc-text) !important;
+}
+
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][class*="highlighted"],
+[class*="dropdown-content-wrapper"] [class*="selectable-item"][class*="has-background"],
+[class*="dropdown-content-wrapper"] [role="option"]:hover {
+  background-color: var(--surface-3) !important;
+  color: var(--input-avc-text) !important;
+}
+
+[class*="dropdown-content-wrapper"] [role="menuitem"]:hover,
+[class*="dropdown-content-wrapper"] [role="menuitem"]:hover [class*="content-wrapper"],
+[class*="dropdown-content-wrapper"] [role="menuitem"]:hover [class*="main-row"],
+[class*="dropdown-content-wrapper"] [class*="menu-item"]:hover,
+[class*="dropdown-content-wrapper"] [class*="menu-item"]:hover [class*="content-wrapper"],
+[class*="dropdown-content-wrapper"] [class*="menu-item"]:hover [class*="main-row"] {
+  background-color: var(--surface-3) !important;
+  color: var(--input-avc-text) !important;
+}
+
+[class*="dropdown-content-wrapper"] .medstream-overall-select-option .medstream-overall-legend-swatch,
+[class*="dropdown-content-wrapper"] [role="option"] .medstream-overall-select-option .medstream-overall-legend-swatch,
+[class*="dropdown-content-wrapper"] [class*="selectable-item"] .medstream-overall-select-option .medstream-overall-legend-swatch {
+  background-color: var(--medstream-overall-option-color) !important;
+}
+
+[data-theme="light"] [class*="dropdown-content-wrapper"] [class*="item-element"][class*="disabled"],
+[data-theme="light"] [class*="dropdown-content-wrapper"] [role="menuitem"][aria-disabled="true"] {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: var(--text-subtle) !important;
+  cursor: default !important;
+}
+
+[data-theme="light"] [class*="dropdown-content-wrapper"] [class*="item-element"][class*="disabled"]:hover,
+[data-theme="light"] [class*="dropdown-content-wrapper"] [class*="item-element"][class*="disabled"][class*="highlighted"] {
+  background-color: transparent !important;
+  border-color: var(--input-avc-border-hover) !important;
+  color: var(--text-subtle) !important;
+}
+
+[data-theme="light"] [class*="dropdown-content-wrapper"] [class*="item-element"][class*="disabled"] *,
+[data-theme="light"] [class*="dropdown-content-wrapper"] [role="menuitem"][aria-disabled="true"],
+[data-theme="light"] [class*="dropdown-content-wrapper"] [role="menuitem"][aria-disabled="true"] * {
+  color: var(--text-subtle) !important;
+}

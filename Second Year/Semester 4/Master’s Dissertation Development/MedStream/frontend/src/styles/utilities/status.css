@@ -1,0 +1,168 @@
+.alert-critical {
+  color: #fff0f2;
+  background: #3a1f25;
+  border-color: #a33a45;
+}
+
+.alert-normal {
+  color: #dbe2ea;
+  background: var(--surface-muted);
+  border-color: var(--border-strong);
+}
+
+[data-theme="light"] .alert-critical {
+  color: #9f1239;
+  background: #ffe7ec;
+  border-color: #e38a98;
+}
+
+[data-theme="light"] .alert-high {
+  color: #92400e;
+  background: #fff2df;
+  border-color: #e8b169;
+}
+
+[data-theme="light"] .alert-normal {
+  color: #166534;
+  background: #e9f8ef;
+  border-color: #86d2ac;
+}
+
+.status-pill {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.status-pill-danger {
+  border-color: #7f1d1d;
+  background: #3b1010;
+  color: #fecaca;
+}
+
+.status-pill-success {
+  border-color: #1f4d36;
+  background: #0e2519;
+  color: #bbf7d0;
+}
+
+.status-pill-neutral {
+  border-color: var(--border-strong);
+  background: var(--surface-muted);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .status-pill-danger {
+  border-color: #e38a98;
+  background: #ffe7ec;
+  color: #9f1239;
+}
+
+[data-theme="light"] .status-pill-success {
+  border-color: #86d2ac;
+  background: #e9f8ef;
+  color: #166534;
+}
+
+[data-theme="light"] .status-pill-neutral {
+  border-color: #b7c7d9;
+  background: #edf2f7;
+  color: #334155;
+}
+
+.status-surface {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.status-surface-danger {
+  border-color: #5b2a2f;
+  background: #2a1618;
+}
+
+.status-surface-warning {
+  border-color: #5d4a1f;
+  background: #2a2111;
+}
+
+.status-surface-success {
+  border-color: #1f4f3a;
+  background: #11251c;
+}
+
+.status-surface-info {
+  border-color: #245267;
+  background: #11232c;
+}
+
+.status-surface-neutral {
+  border-color: var(--border-subtle);
+  background: var(--surface-3);
+}
+
+[data-theme="light"] .status-surface-danger {
+  border-color: #e59cab;
+  background: #fdebf0;
+}
+
+[data-theme="light"] .status-surface-warning {
+  border-color: #edc58b;
+  background: #fff5e8;
+}
+
+[data-theme="light"] .status-surface-success {
+  border-color: #9ad8b7;
+  background: #ecfaf2;
+}
+
+[data-theme="light"] .status-surface-info {
+  border-color: #a5c7e8;
+  background: #eef5fd;
+}
+
+[data-theme="light"] .status-surface-neutral {
+  border-color: #cad7e5;
+  background: #f2f6fa;
+}
+
+.warning-banner {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.warning-banner-danger {
+  border-color: #7f1d1d;
+  background: #2b1212;
+  color: #fecaca;
+}
+
+[data-theme="light"] .warning-banner-danger {
+  border-color: #e38a98;
+  background: #ffe9ee;
+  color: #9f1239;
+}
+
+.discharge-summary-banner {
+  border: 1px solid #6b1d1d;
+  background: #241212;
+}
+
+.discharge-summary-title {
+  color: #fca5a5;
+}
+
+.discharge-summary-label {
+  color: #bfa7a7;
+}
+
+[data-theme="light"] .discharge-summary-banner {
+  border-color: #e59cab;
+  background: #ffedf1;
+}
+
+[data-theme="light"] .discharge-summary-title {
+  color: #9f1239;
+}
+
+[data-theme="light"] .discharge-summary-label {
+  color: #be123c;
+}

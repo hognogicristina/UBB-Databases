@@ -1,0 +1,40 @@
+.theme-switch {
+  position: relative;
+  display: inline-flex;
+  height: 30px;
+  width: 58px;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-switch-dark {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.theme-switch-light {
+  background: #fff3df;
+  border-color: #f0be73;
+}
+
+.theme-switch-knob {
+  position: absolute;
+  left: 3px;
+  height: 22px;
+  width: 22px;
+  border-radius: 9999px;
+  background: #ff9900;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+  transition: transform 0.2s ease;
+}
+
+.theme-switch-knob-light {
+  transform: translateX(28px);
+}
+
+.theme-switch:focus-visible {
+  outline: 2px solid rgba(255, 153, 0, 0.45);
+  outline-offset: 2px;
+}

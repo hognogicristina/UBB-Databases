@@ -1,0 +1,117 @@
+.medstream-dashboard-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.medstream-profile-workspace-grid {
+  display: grid;
+  grid-template-areas:
+    "assigned upcoming"
+    "editable upcoming"
+    "email status";
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.medstream-profile-workspace-grid-compact {
+  grid-template-areas:
+    "assigned upcoming"
+    "editable editable"
+    "email status";
+}
+
+.medstream-profile-workspace-grid-extended {
+  grid-template-areas:
+    "assigned upcoming"
+    "editable upcoming"
+    "email status";
+}
+
+.medstream-assigned-patients-card {
+  grid-area: assigned;
+}
+
+.medstream-upcoming-activities-card {
+  grid-area: upcoming;
+}
+
+.medstream-editable-profile-card {
+  grid-area: editable;
+}
+
+.medstream-account-email-card {
+  grid-area: email;
+}
+
+.medstream-account-status-card {
+  grid-area: status;
+}
+
+.medstream-patient-chart-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  margin: 0 auto;
+}
+
+.medstream-patient-chart-container [class*="content"],
+.medstream-patient-chart-container [class*="content-inner"] {
+  height: auto;
+}
+
+.medstream-patient-chart-container [class*="content-inner"] {
+  padding: 0 12px 10px !important;
+}
+
+.medstream-profile-settings-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.medstream-stretch-container {
+  display: flex;
+  min-width: 0;
+  align-self: stretch;
+}
+
+.medstream-stretch-container > div {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.medstream-streaming-card {
+  height: 100%;
+}
+
+.medstream-patient-chart-stack {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.medstream-patient-chart-stack > .medstream-patient-chart-container {
+  flex: 0 0 auto;
+  min-height: 0;
+}
+
+.medstream-vitals-insights {
+  display: flex;
+  align-items: center;
+  margin-top: 18px;
+  padding: 14px 0 2px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.medstream-vitals-insights > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.medstream-vital-primary {
+  color: var(--accent-strong);
+}

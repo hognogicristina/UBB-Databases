@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">MedStream App Icon</title>
+  <desc id="desc">Minimal medical monitor icon with ECG waveform and heart pulse motif.</desc>
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="#0d1b26"/>
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="none" stroke="#9ca3af" stroke-width="4"/>
+  <path d="M24 66h19l8-15 10 30 8-18h35" fill="none" stroke="#ff9900" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M33 46a11 11 0 0 1 19-7.5l2 2.1 2-2.1a11 11 0 0 1 15.5 15.6L54 72 36.5 54.2A10.9 10.9 0 0 1 33 46Z" fill="none" stroke="#79b8ff" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="104" cy="65" r="4" fill="#7e86ff"/>
+</svg>

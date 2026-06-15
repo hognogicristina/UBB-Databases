@@ -1,0 +1,78 @@
+.login-error {
+  margin: 0;
+  border: 1px solid #a33a45;
+  border-radius: 12px;
+  background: #3a1f25;
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  color: #ffd8dc;
+}
+
+.login-success {
+  margin: 0;
+  border: 1px solid #2a5f8f;
+  border-radius: 12px;
+  background: #1d2d3f;
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  color: #cde6ff;
+}
+
+.login-button {
+  width: 100%;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent);
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.login-button:hover {
+  border-color: #ec7211;
+  background: #ec7211;
+  color: #111827;
+}
+
+.login-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.68;
+  border-color: var(--border-strong);
+  background: var(--border-primary);
+  color: var(--text-secondary);
+}
+
+.login-button.auth-step-primary-button {
+  border-color: var(--accent-strong);
+  background: var(--accent-strong);
+  color: #ffffff;
+}
+
+.login-button.auth-step-primary-button:hover:not(:disabled) {
+  border-color: #075aa7;
+  background: #075aa7;
+  color: #ffffff;
+}
+
+.login-button.auth-step-primary-button:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+.login-button.auth-step-primary-button:disabled {
+  border-color: var(--border-strong);
+  background: var(--border-primary);
+  color: var(--text-secondary);
+}
+
+.auth-link {
+  text-align: left;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--link);
+  text-decoration: none;
+}

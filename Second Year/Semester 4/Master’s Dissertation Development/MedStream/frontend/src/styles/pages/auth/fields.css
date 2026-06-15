@@ -1,0 +1,54 @@
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-primary);
+}
+
+.auth-link-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.875rem;
+}
+
+.login-input,
+.console-input,
+select.login-input,
+select.console-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: var(--aws-control-height);
+  min-height: var(--aws-control-height);
+  border: 1px solid var(--input-avc-border);
+  border-radius: 6px;
+  background-color: var(--input-avc-bg);
+  padding: 5px 34px 5px var(--aws-control-x-padding);
+  font-size: 0.875rem;
+  line-height: 20px;
+  color: var(--input-avc-text);
+  outline: none;
+}
+
+.login-input:disabled,
+.console-input:disabled,
+.medstream-clearable-input:disabled {
+  border-color: var(--input-avc-border);
+  background-color: var(--input-avc-bg);
+  color: var(--text-subtle);
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.login-input:hover,
+.console-input:hover {
+  border-color: var(--input-avc-border-hover);
+}

@@ -1,0 +1,13 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "MedStream",
+      "Group": "Servers",
+      "Host": "postgres",
+      "Port": 5432,
+      "MaintenanceDB": "medstream",
+      "Username": "medstream_user",
+      "SSLMode": "prefer"
+    }
+  }
+}

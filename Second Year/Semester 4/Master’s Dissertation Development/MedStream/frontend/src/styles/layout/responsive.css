@@ -1,0 +1,294 @@
+@media (max-width: 768px) {
+  .medstream-main-frame {
+    --medstream-sidebar-width: 240px;
+    --medstream-sidebar-gap: 12px;
+  }
+
+  .medstream-main-frame-collapsed {
+    --medstream-sidebar-width: 64px;
+  }
+
+  .medstream-content-inner {
+    padding: 12px 12px 24px 0;
+  }
+
+  .medstream-sidebar {
+    width: 240px;
+  }
+
+  .medstream-sidebar-collapsed {
+    width: 64px;
+  }
+
+  .medstream-dashboard-split,
+  .medstream-profile-workspace-grid,
+  .medstream-profile-settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .medstream-profile-workspace-grid,
+  .medstream-profile-workspace-grid-compact,
+  .medstream-profile-workspace-grid-extended {
+    grid-template-areas:
+      "assigned"
+      "upcoming"
+      "editable"
+      "email"
+      "status";
+  }
+
+  .medstream-batch-latest-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .medstream-schedule-frequency-row {
+    grid-template-columns: 1fr;
+  }
+
+  .medstream-batch-job-state {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .medstream-batch-job-state-indicator {
+    width: 30px;
+    height: 30px;
+  }
+
+  .medstream-batch-job-spinner {
+    width: 20px;
+    height: 20px;
+  }
+
+  .medstream-batch-job-state-copy strong {
+    font-size: 14px;
+  }
+
+  .medstream-streaming-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .medstream-streaming-summary-tile,
+  .medstream-streaming-summary-tile:nth-child(3n + 1),
+  .medstream-streaming-summary-tile:nth-child(3n),
+  .medstream-streaming-summary-tile:nth-child(n + 4) {
+    border-top: 0;
+    border-left: 0;
+    padding: 0;
+  }
+
+  .medstream-streaming-summary-tile + .medstream-streaming-summary-tile,
+  .medstream-comparison-batch-metrics-grid .medstream-comparison-metric-card + .medstream-comparison-metric-card,
+  .medstream-batch-latest-metrics-grid .medstream-batch-metric-tile + .medstream-batch-metric-tile {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .medstream-streaming-summary-tile:nth-child(n + 4)::before {
+    display: none;
+  }
+
+  .medstream-streaming-vitals-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .medstream-comparison-chart-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .medstream-comparison-latency-grid .medstream-chart-panel {
+    height: 360px;
+    min-height: 360px;
+  }
+
+  .medstream-comparison-chart-actions {
+    justify-content: flex-start;
+  }
+
+  .medstream-comparison-chart-actions,
+  .medstream-comparison-chart-actions > div {
+    width: 100%;
+  }
+
+  .medstream-comparison-custom-range-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .medstream-comparison-custom-range-popover {
+    right: auto;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .medstream-streaming-vital-panel,
+  .medstream-streaming-vital-panel:first-child,
+  .medstream-streaming-vital-panel:last-child {
+    border-left: 0;
+    padding: 0;
+  }
+
+  .medstream-streaming-vital-panel + .medstream-streaming-vital-panel {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 18px;
+    margin-top: 18px;
+  }
+
+  .medstream-comparison-chart-grid > .medstream-chart-panel + .medstream-chart-panel {
+    border-top: 1px solid var(--border-subtle);
+    border-left: 0;
+    padding-top: 20px;
+    padding-left: 0;
+  }
+
+  .medstream-overall-chart-panel {
+    height: 500px;
+    min-height: 500px;
+  }
+
+  .medstream-overall-filter {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .medstream-overall-pie {
+    height: 360px;
+  }
+
+  .medstream-overall-legend {
+    position: static;
+  }
+
+  .medstream-how-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .medstream-how-card-wide {
+    grid-column: auto;
+  }
+
+  .medstream-controls-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .medstream-clinical-record-row {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .medstream-clinical-record-title-row,
+  .medstream-clinical-record-side {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .medstream-patient-details-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .medstream-timeline-item-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .medstream-sfn-wrapper-header,
+  .medstream-sfn-heading {
+    flex-direction: column;
+  }
+
+  .medstream-sfn-content {
+    grid-template-columns: 1fr;
+  }
+
+  .medstream-sfn-status-rail {
+    display: none;
+  }
+
+  .medstream-sfn-detail-grid,
+  .medstream-sfn-transition-grid,
+  .medstream-dynamodb-grid,
+  .medstream-clinical-context-panel,
+  .medstream-dynamodb-meta,
+  .medstream-attribute-summary-grid,
+  .medstream-attribute-entry,
+  .medstream-key-value-grid-three,
+  .medstream-alert-history-row,
+  .medstream-alert-history-values,
+  .medstream-attribute-row,
+  .medstream-attribute-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .medstream-clinical-context-section + .medstream-clinical-context-section {
+    border-top: 1px solid var(--border-subtle);
+    border-left: 0;
+    padding-top: 16px;
+    padding-left: 0;
+  }
+
+  .medstream-clinical-context-section:first-child {
+    padding-right: 0;
+  }
+
+  .medstream-page-heading-row {
+    flex-direction: column;
+  }
+
+  .medstream-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .medstream-activity-dialog {
+    max-height: calc(100vh - 24px);
+  }
+
+  .medstream-activity-dialog-header,
+  .medstream-activity-dialog-form {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .medstream-activity-date-grid,
+  .medstream-activity-participants {
+    grid-template-columns: 1fr;
+  }
+
+  .medstream-activity-dialog-header {
+    flex-direction: column;
+  }
+
+  .medstream-form-actions {
+    justify-content: flex-start;
+  }
+
+  .medstream-assign-button,
+  .medstream-assign-button button {
+    width: max-content !important;
+  }
+
+  .medstream-profile-row-main,
+  .medstream-profile-pagination {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .medstream-profile-activity-status-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .medstream-profile-activity-actions {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .medstream-clinical-record-row {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}

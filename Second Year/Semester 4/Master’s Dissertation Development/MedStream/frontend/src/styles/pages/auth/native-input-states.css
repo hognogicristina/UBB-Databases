@@ -1,0 +1,51 @@
+.app-shell [class*="placeholder"],
+.medstream-content-inner [class*="placeholder"],
+[class*="awsui_placeholder"] {
+  font-style: italic !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-style: italic;
+}
+
+.login-input:focus,
+.console-input:focus {
+  border-color: var(--link);
+  box-shadow: 0 0 0 2px var(--input-avc-focus-ring);
+  outline: 0;
+}
+
+.login-input::placeholder,
+.console-input::placeholder {
+  color: var(--input-avc-placeholder);
+  font-style: italic;
+}
+
+.login-input[type="date"],
+.console-input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  color-scheme: light;
+  padding-right: 56px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230972d3' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 34px center;
+  background-size: 16px;
+  position: relative;
+}
+
+[data-theme="light"] .login-input[type="date"],
+[data-theme="light"] .console-input[type="date"] {
+  color-scheme: light;
+}
+
+.login-input[type="date"]::-webkit-calendar-picker-indicator,
+.console-input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
