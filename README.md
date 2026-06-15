@@ -34,6 +34,4 @@ This repository includes my projects from my master's degree in Databases at UBB
     <ul>
         <li><a href="https://github.com/hognogicristina/UBB-Databases/tree/main/Second%20Year/Semester%204/Database%20Research%20Project">Database Research Project</a></li>
         <li><a href="https://github.com/hognogicristina/UBB-Databases/tree/main/Second%20Year/Semester%204/Master’s%20Dissertation%20Development">Master’s Dissertation Development</a></li>
-        <li><a href="https://github.com/hognogicristina/UBB-Databases/tree/main/Second%20Year/Semester%204/Specialized%20Professional%20Practice">Specialized Professional Practice</a></li>
-    </ul>
 </ul>
